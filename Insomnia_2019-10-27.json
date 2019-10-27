@@ -1,0 +1,81 @@
+{
+    "_type": "export",
+    "__export_format": 4,
+    "__export_date": "2019-10-27T07:04:15.190Z",
+    "__export_source": "insomnia.desktop.app:v7.0.3",
+    "resources": [{
+        "_id": "req_0928332f208841a0aef76b3d1d37e8eb",
+        "authentication": {},
+        "body": {},
+        "created": 1572159659848,
+        "description": "",
+        "headers": [],
+        "isPrivate": false,
+        "metaSortKey": -1572159659848,
+        "method": "GET",
+        "modified": 1572159710088,
+        "name": "Characters",
+        "parameters": [],
+        "parentId": "wrk_5f11d818eac94192bbb3eaf2d9ed348f",
+        "settingDisableRenderRequestBody": false,
+        "settingEncodeUrl": true,
+        "settingRebuildPath": true,
+        "settingSendCookies": true,
+        "settingStoreCookies": true,
+        "url": "{{baseUrl}}/characters",
+        "_type": "request"
+    }, {
+        "_id": "wrk_5f11d818eac94192bbb3eaf2d9ed348f",
+        "created": 1572158819883,
+        "description": "",
+        "modified": 1572158819883,
+        "name": "Morpheus",
+        "parentId": null,
+        "_type": "workspace"
+    }, {
+        "_id": "req_fdb86be76fce4f16a3155fe9d54e73c6",
+        "authentication": {},
+        "body": {},
+        "created": 1572159715152,
+        "description": "",
+        "headers": [],
+        "isPrivate": false,
+        "metaSortKey": -1571992342528.5,
+        "method": "GET",
+        "modified": 1572159755302,
+        "name": "Character",
+        "parameters": [],
+        "parentId": "wrk_5f11d818eac94192bbb3eaf2d9ed348f",
+        "settingDisableRenderRequestBody": false,
+        "settingEncodeUrl": true,
+        "settingRebuildPath": true,
+        "settingSendCookies": true,
+        "settingStoreCookies": true,
+        "url": "{{baseUrl}}/characters/1",
+        "_type": "request"
+    }, {
+        "_id": "env_0cfb20a6aa59a292bdfc5906e0de74e77856df60",
+        "color": null,
+        "created": 1572158819937,
+        "data": {
+            "baseUrl": "http://localhost:3000"
+        },
+        "dataPropertyOrder": {
+            "&": ["baseUrl"]
+        },
+        "isPrivate": false,
+        "metaSortKey": 1572158819937,
+        "modified": 1572159685664,
+        "name": "Base Environment",
+        "parentId": "wrk_5f11d818eac94192bbb3eaf2d9ed348f",
+        "_type": "environment"
+    }, {
+        "_id": "jar_0cfb20a6aa59a292bdfc5906e0de74e77856df60",
+        "cookies": [],
+        "created": 1572158819940,
+        "modified": 1572158819940,
+        "name": "Default Jar",
+        "parentId": "wrk_5f11d818eac94192bbb3eaf2d9ed348f",
+        "_type": "cookie_jar"
+    }]
+}
