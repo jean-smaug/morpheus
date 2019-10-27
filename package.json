@@ -5,6 +5,9 @@
   "repository": "git@github.com:jean-smaug/morpheus.git",
   "author": "jean-smaug <maximeblanc.dev@gmail.com>",
   "license": "MIT",
+  "bin": {
+    "morpheus": "jest dist"
+  },
   "scripts": {
     "server": "nodemon __tests__/server.js"
   },
