@@ -4,7 +4,10 @@ import fs from "fs";
 const INSOMNIA_FILE_NAME = /insomnia.*\.json/i;
 const VARIABLE = /{{\s*(?<variable>\w+)\s*}}/i;
 
-const cwd = process.cwd();
+const {
+  cwd,
+  env: { FILE }
+} = process;
 
 type Resource = {
   _id: string;
@@ -45,11 +48,11 @@ type Request = {
   _type: string;
 };
 
-const insomniaFileName = fs
-  .readdirSync(cwd)
-  .find(fileName => fileName.match(INSOMNIA_FILE_NAME));
+const insomniaFileName =
+  FILE ||
+  fs.readdirSync(cwd()).find(fileName => fileName.match(INSOMNIA_FILE_NAME));
 
-if (!insomniaFileName) {
+if (!insomniaFileName || !fs.existsSync(insomniaFileName)) {
   throw new Error("Insonmia file not found");
 }
 
