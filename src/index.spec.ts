@@ -1,4 +1,4 @@
-import got from "got";
+import * as got from "got";
 import fs from "fs";
 
 const INSOMNIA_FILE_NAME = /insomnia.*\.json/i;
@@ -7,6 +7,26 @@ const VARIABLE = /{{\s*(?<variable>\w+)\s*}}/i;
 const cwd = process.cwd();
 
 type Resource = {
+  _id: string;
+  description: string;
+  name: string;
+  settingDisableRenderRequestBody: boolean;
+  settingEncodeUrl: boolean;
+  settingRebuildPath: boolean;
+  settingSendCookies: boolean;
+  settingStoreCookies: boolean;
+  _type: string;
+};
+
+type Environment = {
+  _id: string;
+  color: null;
+  created: 1572158819937;
+  data: object;
+  _type: "environment";
+};
+
+type Request = {
   _id: string;
   authentication: {};
   body: {};
@@ -23,14 +43,6 @@ type Resource = {
   settingStoreCookies: boolean;
   url: string;
   _type: string;
-};
-
-type Environment = {
-  _id: string;
-  color: null;
-  created: 1572158819937;
-  data: object;
-  _type: "environment";
 };
 
 const insomniaFileName = fs
@@ -56,7 +68,7 @@ const requests: [] = insomniaFile.resources.filter(
   (item: Resource) => item._type === "request"
 );
 
-requests.forEach(request => {
+requests.forEach((request: Request) => {
   const keys = Object.keys(request);
   keys.forEach(key => {
     const execution = VARIABLE.exec(request[key]);
@@ -75,4 +87,11 @@ requests.forEach(request => {
   });
 });
 
-console.log(requests);
+requests.forEach((request: Request) => {
+  const { method, url } = request;
+  it(`${method} - ${url}`, async () => {
+    expect(
+      (await got[method.toLowerCase()](request.url, { json: true })).body
+    ).toMatchSnapshot();
+  });
+});
