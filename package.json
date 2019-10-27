@@ -5,6 +5,9 @@
   "repository": "git@github.com:jean-smaug/morpheus.git",
   "author": "jean-smaug <maximeblanc.dev@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "server": "nodemon __tests__/server.js"
+  },
   "dependencies": {
     "got": "9.6.0"
   },
@@ -15,6 +18,7 @@
     "jest": "24.9.0",
     "koa": "2.10.0",
     "koa-router": "7.4.0",
+    "nodemon": "1.19.4",
     "ts-jest": "24.1.0",
     "typescript": "3.6.4"
   },
