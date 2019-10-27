@@ -1,4 +1,4 @@
-import * as got from "got";
+import got from "got";
 import fs from "fs";
 
 const INSOMNIA_FILE_NAME = /insomnia.*\.json/i;
@@ -68,7 +68,7 @@ const requests: [] = insomniaFile.resources.filter(
   (item: Resource) => item._type === "request"
 );
 
-requests.forEach((request: Request) => {
+requests.forEach((request: { [key: string]: any }) => {
   const keys = Object.keys(request);
   keys.forEach(key => {
     const execution = VARIABLE.exec(request[key]);
@@ -87,11 +87,20 @@ requests.forEach((request: Request) => {
   });
 });
 
+enum GotMethod {
+  GET = "get",
+  POST = "post",
+  PUT = "put",
+  DELETE = "delete"
+}
+
 requests.forEach((request: Request) => {
   const { method, url } = request;
   it(`${method} - ${url}`, async () => {
+    const gotMethod: GotMethod = GotMethod[method];
+
     expect(
-      (await got[method.toLowerCase()](request.url, { json: true })).body
+      (await got[gotMethod](request.url, { json: true })).body
     ).toMatchSnapshot();
   });
 });
