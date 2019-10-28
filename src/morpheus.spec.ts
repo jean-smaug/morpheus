@@ -90,7 +90,7 @@ requests.forEach((request: { [key: string]: any }) => {
   });
 });
 
-type LowerCasedHttpMethod = "get" | "post" | "put" | "delete"
+type LowerCasedHttpMethod = "get" | "post" | "put" | "delete";
 
 requests.forEach((request: Request) => {
   const { method: requestMethod, url: requestUrl } = request;
