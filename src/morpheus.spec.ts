@@ -102,8 +102,10 @@ requests.forEach((request: Request) => {
   it(`${method} - ${url}`, async () => {
     const gotMethod: GotMethod = GotMethod[method];
 
-    expect(
-      (await got[gotMethod](request.url, { json: true })).body
-    ).toMatchSnapshot();
+    const { body, headers, statusCode } = (await got[gotMethod](request.url, { json: true }))
+
+    delete headers.date
+
+    expect({ statusCode, headers, body }).toMatchSnapshot();
   });
 });
