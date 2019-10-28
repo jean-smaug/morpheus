@@ -93,12 +93,12 @@ requests.forEach((request: { [key: string]: any }) => {
 type LowerCasedHttpMethod = "get" | "post" | "put" | "delete"
 
 requests.forEach((request: Request) => {
-  const { method, url } = request;
+  const { method: requestMethod, url: requestUrl } = request;
 
-  it(`${method} - ${url}`, async () => {
+  it(`${requestMethod} - ${requestUrl}`, async () => {
     try {
-      const gotMethod: LowerCasedHttpMethod = method.toLowerCase() as LowerCasedHttpMethod;
-      const { body, headers, statusCode } = (await got[gotMethod](request.url))
+      const gotMethod: LowerCasedHttpMethod = requestMethod.toLowerCase() as LowerCasedHttpMethod;
+      const { body, headers, statusCode } = (await got[gotMethod](requestUrl))
   
       delete headers.date
 
