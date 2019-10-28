@@ -105,11 +105,16 @@ requests.forEach((request: Request) => {
   it(`${method} - ${url}`, async () => {
     try {
       const gotMethod: GotMethod = GotMethod[method as HttpMethod];
-      const { body, headers, statusCode } = (await got[gotMethod](request.url, { json: true }))
+      const { body, headers, statusCode } = (await got[gotMethod](request.url))
   
       delete headers.date
+
+      const serializedBody = 
+        headers["content-type"] && headers["content-type"].includes("application/json")
+        ? JSON.parse(body)
+        : body
   
-      expect({ statusCode, headers, body }).toMatchSnapshot();
+      expect({ statusCode, headers, body: serializedBody }).toMatchSnapshot();
     } catch (error) {
       expect(error).toMatchSnapshot()
     }
