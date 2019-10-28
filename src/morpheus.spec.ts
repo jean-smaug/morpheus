@@ -90,21 +90,14 @@ requests.forEach((request: { [key: string]: any }) => {
   });
 });
 
-enum GotMethod {
-  GET = "get",
-  POST = "post",
-  PUT = "put",
-  DELETE = "delete"
-}
-
-type HttpMethod = "GET" | "POST" | "PUT" | "DELETE"
+type LowerCasedHttpMethod = "get" | "post" | "put" | "delete"
 
 requests.forEach((request: Request) => {
   const { method, url } = request;
 
   it(`${method} - ${url}`, async () => {
     try {
-      const gotMethod: GotMethod = GotMethod[method as HttpMethod];
+      const gotMethod: LowerCasedHttpMethod = method.toLowerCase() as LowerCasedHttpMethod;
       const { body, headers, statusCode } = (await got[gotMethod](request.url))
   
       delete headers.date
