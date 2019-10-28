@@ -1,5 +1,5 @@
 import got from "got";
-import fs from "fs";
+import fs, { access } from "fs";
 import _get from "lodash/get";
 
 const INSOMNIA_FILE_NAME = /insomnia.*\.json/i;
@@ -34,6 +34,7 @@ type Request = {
   _id: string;
   authentication: {};
   body: {};
+  data: {}
   description: string;
   headers: [];
   isPrivate: false;
@@ -94,12 +95,16 @@ requests.forEach((request: { [key: string]: any }) => {
 type LowerCasedHttpMethod = "get" | "post" | "put" | "delete";
 
 requests.forEach((request: Request) => {
-  const { method: requestMethod, url: requestUrl } = request;
-  console.log(requestUrl)
+  const { method: requestMethod, url: requestUrl, body: requestBody, headers: requestHeaders } = request;
+  const isJson: boolean = requestBody.mimeType === "application/json"
   it(`${requestMethod} - ${requestUrl}`, async () => {
+    console.log(requestHeaders)
     try {
       const gotMethod: LowerCasedHttpMethod = requestMethod.toLowerCase() as LowerCasedHttpMethod;
-      const { body, headers, statusCode } = (await got[gotMethod](requestUrl))
+      const { body, headers, statusCode } = (await got[gotMethod](requestUrl, {
+        headers: requestHeaders.reduce((acc, header) => ({ ...acc, [header.name]: headers.value }) ,{}),
+        body: requestBody.text
+      }))
   
       delete headers.date
 
