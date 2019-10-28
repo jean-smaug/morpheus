@@ -1,8 +1,9 @@
 import got from "got";
 import fs from "fs";
+import _get from "lodash/get";
 
 const INSOMNIA_FILE_NAME = /insomnia.*\.json/i;
-const VARIABLE = /{{\s*(?<variable>\w+)\s*}}/i;
+const VARIABLE = /{{\s*(?<variable>[\w.]+)\s*}}/i;
 
 const {
   cwd,
@@ -78,7 +79,7 @@ requests.forEach((request: { [key: string]: any }) => {
     if (execution === null) {
       return;
     }
-
+    
     if (!execution.groups) {
       return;
     }
@@ -86,7 +87,7 @@ requests.forEach((request: { [key: string]: any }) => {
     const { variable } = execution.groups;
     const match = execution[0];
 
-    request[key] = request[key].replace(match, envs[variable]);
+    request[key] = request[key].replace(match, _get(envs, variable));
   });
 });
 
@@ -94,7 +95,7 @@ type LowerCasedHttpMethod = "get" | "post" | "put" | "delete";
 
 requests.forEach((request: Request) => {
   const { method: requestMethod, url: requestUrl } = request;
-
+  console.log(requestUrl)
   it(`${requestMethod} - ${requestUrl}`, async () => {
     try {
       const gotMethod: LowerCasedHttpMethod = requestMethod.toLowerCase() as LowerCasedHttpMethod;

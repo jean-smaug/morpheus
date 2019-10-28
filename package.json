@@ -15,11 +15,13 @@
   },
   "dependencies": {
     "got": "9.6.0",
-    "jest": "24.9.0"
+    "jest": "24.9.0",
+    "lodash": "4.17.15"
   },
   "devDependencies": {
     "@types/got": "9.6.7",
     "@types/jest": "24.0.20",
+    "@types/lodash": "4.14.144",
     "@types/node": "12.11.7",
     "koa": "2.10.0",
     "koa-router": "7.4.0",
