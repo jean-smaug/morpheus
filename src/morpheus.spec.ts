@@ -97,15 +97,21 @@ enum GotMethod {
   DELETE = "delete"
 }
 
+type HttpMethod = "GET" | "POST" | "PUT" | "DELETE"
+
 requests.forEach((request: Request) => {
   const { method, url } = request;
+
   it(`${method} - ${url}`, async () => {
-    const gotMethod: GotMethod = GotMethod[method];
-
-    const { body, headers, statusCode } = (await got[gotMethod](request.url, { json: true }))
-
-    delete headers.date
-
-    expect({ statusCode, headers, body }).toMatchSnapshot();
+    try {
+      const gotMethod: GotMethod = GotMethod[method as HttpMethod];
+      const { body, headers, statusCode } = (await got[gotMethod](request.url, { json: true }))
+  
+      delete headers.date
+  
+      expect({ statusCode, headers, body }).toMatchSnapshot();
+    } catch (error) {
+      expect(error).toMatchSnapshot()
+    }
   });
 });
