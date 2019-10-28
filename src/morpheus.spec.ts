@@ -98,11 +98,10 @@ requests.forEach((request: Request) => {
   const { method: requestMethod, url: requestUrl, body: requestBody, headers: requestHeaders } = request;
   const isJson: boolean = requestBody.mimeType === "application/json"
   it(`${requestMethod} - ${requestUrl}`, async () => {
-    console.log(requestHeaders)
     try {
       const gotMethod: LowerCasedHttpMethod = requestMethod.toLowerCase() as LowerCasedHttpMethod;
       const { body, headers, statusCode } = (await got[gotMethod](requestUrl, {
-        headers: requestHeaders.reduce((acc, header) => ({ ...acc, [header.name]: headers.value }) ,{}),
+        headers: requestHeaders.reduce((acc, header) => ({ ...acc, [header.name]: header.value }) ,{}),
         body: requestBody.text
       }))
   
