@@ -9,6 +9,8 @@
     "morpheus": "jest dist"
   },
   "scripts": {
+    "morpheus": "jest dist",
+    "watch": "tsc --watch",
     "server": "nodemon __tests__/server.js"
   },
   "dependencies": {
