@@ -31,7 +31,6 @@ router.get("/characters/:id", ctx => {
 
 router.post("/characters", ctx => {
   ctx.status = 201;
-  ctx.body = "";
 });
 
 app.use(router.routes());
