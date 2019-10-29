@@ -10,6 +10,8 @@ module.exports = {
     const splitedPath = snapshotFilePath.split("/");
     const fileName = splitedPath[splitedPath.length - 1];
 
+
+    
     return snapshotFilePath
       .slice(0, -fileName.length)
       .concat("dist/")
