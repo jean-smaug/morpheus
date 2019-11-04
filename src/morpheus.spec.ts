@@ -79,7 +79,7 @@ requests.forEach((request: { [key: string]: any }) => {
     if (execution === null) {
       return;
     }
-    
+
     if (!execution.groups) {
       return;
     }
@@ -95,22 +95,23 @@ type LowerCasedHttpMethod = "get" | "post" | "put" | "delete";
 
 requests.forEach((request: Request) => {
   const { method: requestMethod, url: requestUrl } = request;
-  console.log(requestUrl)
+
   it(`${requestMethod} - ${requestUrl}`, async () => {
     try {
       const gotMethod: LowerCasedHttpMethod = requestMethod.toLowerCase() as LowerCasedHttpMethod;
-      const { body, headers, statusCode } = (await got[gotMethod](requestUrl))
-  
-      delete headers.date
+      const { body, headers, statusCode } = await got[gotMethod](requestUrl);
 
-      const serializedBody = 
-        headers["content-type"] && headers["content-type"].includes("application/json")
-        ? JSON.parse(body)
-        : body
-  
+      delete headers.date;
+
+      const serializedBody =
+        headers["content-type"] &&
+        headers["content-type"].includes("application/json")
+          ? JSON.parse(body)
+          : body;
+
       expect({ statusCode, headers, body: serializedBody }).toMatchSnapshot();
     } catch (error) {
-      expect(error).toMatchSnapshot()
+      expect(error).toMatchSnapshot();
     }
   });
 });
