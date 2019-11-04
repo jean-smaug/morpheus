@@ -1,11 +1,11 @@
-# Morpheus
+# [WIP] Morpheus
 
 Export your [Insomnia](https://insomnia.rest) workspace and test it in command line.
 
 ## Installation
 
 ```bash
-yarn add @jeansmaug/morpheus
+yarn add @lano/morpheus
 ```
 
 ## Usage
@@ -45,4 +45,3 @@ Object {
   "statusCode": 201,
 }
 ```
-
