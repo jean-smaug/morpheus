@@ -3,20 +3,15 @@ import _get from "lodash/get";
 const VARIABLE = /{{\s*(?<variable>[\w.]+)\s*}}/i;
 
 export function replaceTemplateByValue(template: object, envs: object) {
-
     const keys = Object.keys(template);
     
     return keys.reduce((acc: object, key: string) => {
       const execution = VARIABLE.exec(template[key]);
-      if (execution === null) {
-        return;
+  
+      if (execution === null || !execution.groups) {
+        return {... acc, [key]: template[key]};
       }
   
-      if (!execution.groups) {
-        return;
-      }
-
-      
       const { variable } = execution.groups;
       const match = execution[0];
   
