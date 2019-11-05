@@ -95,7 +95,7 @@ requests.forEach((request: { [key: string]: any }) => {
 type LowerCasedHttpMethod = "get" | "post" | "put" | "delete";
 
 requests.forEach((request: Request) => {
-  const { method: requestMethod, url: requestUrl, authentication } = request;
+  const { method: requestMethod, url: requestUrl, authentication, description } = request;
 
   let requestHeaders: OutgoingHttpHeaders = {}
 
@@ -116,7 +116,7 @@ requests.forEach((request: Request) => {
           ? JSON.parse(body)
           : body;
 
-      expect({ statusCode, headers, body: serializedBody }).toMatchSnapshot();
+      expect({ statusCode, headers, body: serializedBody, description }).toMatchSnapshot();
     } catch (error) {
       expect(error).toMatchSnapshot();
     }

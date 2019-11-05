@@ -1,7 +1,7 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2019-11-05T08:09:00.669Z",
+  "__export_date": "2019-11-05T08:19:49.982Z",
   "__export_source": "insomnia.desktop.app:v7.0.3",
   "resources": [
     {
@@ -40,12 +40,12 @@
       "authentication": { "token": "{{token}}", "type": "bearer" },
       "body": {},
       "created": 1572159715152,
-      "description": "",
+      "description": "Tu crois que c'est du respect mon garçon ?",
       "headers": [],
       "isPrivate": false,
       "metaSortKey": -1571992342528.5,
       "method": "GET",
-      "modified": 1572941321441,
+      "modified": 1572941974772,
       "name": "Get character",
       "parameters": [],
       "parentId": "wrk_5f11d818eac94192bbb3eaf2d9ed348f",
