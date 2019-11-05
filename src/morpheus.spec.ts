@@ -10,10 +10,9 @@ const requests: [] = insomniaFile.resources.filter(
   (item: Resource) => item._type === "request"
 );
 
-const requestsWithEnvs = requests.map((request: { [key: string]: any }): Request => {
+const requestsWithEnvs = requests.map((request: Request) => {
   return replaceTemplateByValue(request, envs)
 });
-
 
 requestsWithEnvs.forEach((request: Request) => {
   const { method: requestMethod, url: requestUrl, authentication, description, parameters } = request;

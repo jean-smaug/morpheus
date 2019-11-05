@@ -32,4 +32,4 @@ router.post("/characters", ctx => {
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-app.listen(4000, () => console.log("Ready for testing"));
+app.listen(5000, () => console.log("Ready for testing"));
