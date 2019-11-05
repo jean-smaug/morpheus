@@ -1,11 +1,9 @@
 import got from "got";
 import fs from "fs";
-import _get from "lodash/get";
 import { replaceTemplateByValue } from "./utils"
 import { OutgoingHttpHeaders } from "http";
 
 const INSOMNIA_FILE_NAME = /insomnia.*\.json/i;
-const VARIABLE = /{{\s*(?<variable>[\w.]+)\s*}}/i;
 
 const {
   cwd,
