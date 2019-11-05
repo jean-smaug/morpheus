@@ -1,6 +1,7 @@
 import got from "got";
 import fs from "fs";
 import _get from "lodash/get";
+import { OutgoingHttpHeaders } from "http";
 
 const INSOMNIA_FILE_NAME = /insomnia.*\.json/i;
 const VARIABLE = /{{\s*(?<variable>[\w.]+)\s*}}/i;
@@ -94,12 +95,18 @@ requests.forEach((request: { [key: string]: any }) => {
 type LowerCasedHttpMethod = "get" | "post" | "put" | "delete";
 
 requests.forEach((request: Request) => {
-  const { method: requestMethod, url: requestUrl } = request;
+  const { method: requestMethod, url: requestUrl, authentication } = request;
+
+  let requestHeaders: OutgoingHttpHeaders = {}
+
+  if(authentication.type === "bearer") {
+    requestHeaders.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.sr08LEMNntsBjm8vu8Xv1ciDBmKZUv-dRKiO2efI7KI`
+  }
 
   it(`${requestMethod} - ${requestUrl}`, async () => {
     try {
       const gotMethod: LowerCasedHttpMethod = requestMethod.toLowerCase() as LowerCasedHttpMethod;
-      const { body, headers, statusCode } = await got[gotMethod](requestUrl);
+      const { body, headers, statusCode } = await got[gotMethod](requestUrl, { headers: requestHeaders });
 
       delete headers.date;
 

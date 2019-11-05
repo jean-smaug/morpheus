@@ -1,23 +1,13 @@
 const Koa = require("koa");
 const Router = require("koa-router");
+const jwt = require("koa-jwt");
+const characters = require("./characters.json");
 
 const app = new Koa();
 const router = new Router();
 
-const characters = [
-  {
-    id: 1,
-    name: "Luffy"
-  },
-  {
-    id: 2,
-    name: "Zoro"
-  },
-  {
-    id: 3,
-    name: "Kirito"
-  }
-];
+// Valid JWT --> eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.sr08LEMNntsBjm8vu8Xv1ciDBmKZUv-dRKiO2efI7KI
+app.use(jwt({ secret: "SECRET" }));
 
 router.get("/characters", ctx => {
   ctx.body = characters;
