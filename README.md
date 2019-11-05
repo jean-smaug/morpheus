@@ -15,17 +15,17 @@ By default Morpheus will look for a file named `/Insomnia.*\.json/i`
 ```json
 {
   "scripts": {
-    "test:requests": "morpheus"
+    "test:api": "morpheus"
   }
 }
 ```
 
-You can specify a file name using the `--file` option
+You can specify a file name using the `FILE` env variable
 
 ```json
 {
   "scripts": {
-    "test:requests": "FILE=./__tests__/Insomnia.json morpheus"
+    "test:api": "FILE=./__tests__/Insomnia.json morpheus"
   }
 }
 ```
@@ -36,12 +36,16 @@ The generated snapshot will look like the following. Keep in mind that the `date
 
 ```js
 Object {
-  "body": "Created",
+  "body": Object {
+    "id": 1,
+    "name": "Luffy",
+  },
+  "description": "Tu crois que c'est du respect mon garçon ?",
   "headers": Object {
     "connection": "close",
-    "content-length": "7",
-    "content-type": "text/plain; charset=utf-8",
+    "content-length": "23",
+    "content-type": "application/json; charset=utf-8",
   },
-  "statusCode": 201,
+  "statusCode": 200,
 }
 ```
