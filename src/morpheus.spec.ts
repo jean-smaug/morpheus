@@ -44,7 +44,7 @@ requestsWithEnvs.forEach((request: Request) => {
   const { method: requestMethod, url: requestUrl, authentication, description } = request;
   
   let requestHeaders: OutgoingHttpHeaders = {}
-  if(authentication.type === "bearer") {
+  if(authentication.type === "bearer" && request.authentication.token) {
     requestHeaders.Authorization = `Bearer ${request.authentication.token}`
   }
 

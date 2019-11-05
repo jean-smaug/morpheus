@@ -1,24 +1,19 @@
-export type Resource = {
+export interface Resource {
     _id: string;
     description: string;
     name: string;
-    settingDisableRenderRequestBody: boolean;
-    settingEncodeUrl: boolean;
-    settingRebuildPath: boolean;
-    settingSendCookies: boolean;
-    settingStoreCookies: boolean;
     _type: string;
 };
 
-export type Request = {
-    _id: string;
-    authentication: {};
+export interface Request extends Resource {
+    authentication: {
+        type?: string;
+        token?: string;
+    };
     body: {};
-    description: string;
     headers: [];
     isPrivate: false;
     method: string;
-    name: string;
     parameters: [];
     settingDisableRenderRequestBody: boolean;
     settingEncodeUrl: boolean;
@@ -26,14 +21,11 @@ export type Request = {
     settingSendCookies: boolean;
     settingStoreCookies: boolean;
     url: string;
-    _type: string;
+    _type: "request";
 };
 
-export type Environment = {
-    _id: string;
+export interface Environment extends Resource {
     color: null;
-    created: 1572158819937;
     data: object;
     _type: "environment";
 };
-  
