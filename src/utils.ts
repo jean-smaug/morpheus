@@ -6,7 +6,7 @@ export function replaceTemplateByValue(template: object, envs: object) {
 
     const keys = Object.keys(template);
     
-    keys.forEach(key => {
+    return keys.reduce((acc: object, key: string) => {
       const execution = VARIABLE.exec(template[key]);
       if (execution === null) {
         return;
@@ -20,8 +20,6 @@ export function replaceTemplateByValue(template: object, envs: object) {
       const { variable } = execution.groups;
       const match = execution[0];
   
-      template[key] = template[key].replace(match, _get(envs, variable));
-    });
-
-    return template;
+      return { ...acc, [key]: template[key].replace(match, _get(envs, variable)) };
+    }, {});
 }
