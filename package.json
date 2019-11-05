@@ -9,7 +9,7 @@
     "morpheus": "./index.js"
   },
   "scripts": {
-    "morpheus": "jest dist",
+    "test": "jest src/__tests__ --config=local.jest.config.js",
     "watch": "tsc --watch",
     "server": "nodemon __tests__/server.js"
   },
