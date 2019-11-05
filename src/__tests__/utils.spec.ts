@@ -45,7 +45,7 @@ describe("utils", () => {
         })
     })
 
-    it.skip("should replace variable by the real value when template is deep", () => {
+    it("should replace variable by the real value when template is deep", () => {
         const template = {
             deep: {
                 jean: "{{smaug}}"

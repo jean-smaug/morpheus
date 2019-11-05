@@ -6,6 +6,10 @@ export function replaceTemplateByValue(template: object, envs: object) {
     const keys = Object.keys(template);
     
     return keys.reduce((acc: object, key: string) => {
+      if(typeof template[key] === "object") {
+        return { ...acc, [key]: replaceTemplateByValue(template[key], envs)}
+      }
+
       const execution = VARIABLE.exec(template[key]);
   
       if (execution === null || !execution.groups) {
