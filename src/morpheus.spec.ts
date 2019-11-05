@@ -1,7 +1,8 @@
 import got from "got";
 import fs from "fs";
-import { replaceTemplateByValue } from "./utils"
 import { OutgoingHttpHeaders } from "http";
+import { Request, Resource, Environment } from "./types"
+import { replaceTemplateByValue } from "./utils"
 
 const INSOMNIA_FILE_NAME = /insomnia.*\.json/i;
 
@@ -9,45 +10,6 @@ const {
   cwd,
   env: { FILE }
 } = process;
-
-type Resource = {
-  _id: string;
-  description: string;
-  name: string;
-  settingDisableRenderRequestBody: boolean;
-  settingEncodeUrl: boolean;
-  settingRebuildPath: boolean;
-  settingSendCookies: boolean;
-  settingStoreCookies: boolean;
-  _type: string;
-};
-
-type Environment = {
-  _id: string;
-  color: null;
-  created: 1572158819937;
-  data: object;
-  _type: "environment";
-};
-
-type Request = {
-  _id: string;
-  authentication: {};
-  body: {};
-  description: string;
-  headers: [];
-  isPrivate: false;
-  method: string;
-  name: string;
-  parameters: [];
-  settingDisableRenderRequestBody: boolean;
-  settingEncodeUrl: boolean;
-  settingRebuildPath: boolean;
-  settingSendCookies: boolean;
-  settingStoreCookies: boolean;
-  url: string;
-  _type: string;
-};
 
 const insomniaFileName =
   FILE ||
