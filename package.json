@@ -9,9 +9,10 @@
     "morpheus": "./index.js"
   },
   "scripts": {
+    "servers": "concurrently 'yarn rest' 'yarn graphql'",
     "test": "jest src/__tests__ --config=local.jest.config.js",
     "watch": "tsc --watch",
-    "server": "nodemon tests/server.js",
+    "rest": "nodemon tests/rest.js",
     "graphql": "nodemon tests/graphql.js"
   },
   "dependencies": {
@@ -25,6 +26,7 @@
     "@types/lodash": "4.14.144",
     "@types/node": "12.11.7",
     "apollo-server": "2.9.7",
+    "concurrently": "5.0.0",
     "graphql": "14.5.8",
     "koa": "2.10.0",
     "koa-jwt": "3.6.0",

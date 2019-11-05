@@ -1,6 +1,6 @@
 const { ApolloServer, gql } = require("apollo-server");
 
-const books = require("./books.json.js");
+const books = require("./books.json");
 
 const typeDefs = gql`
   type Book {
