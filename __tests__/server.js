@@ -13,6 +13,12 @@ router.get("/characters", ctx => {
   ctx.body = characters;
 });
 
+router.get("/characters/name-querystring", ctx => {
+  ctx.body = characters.find(
+    character => character.name === ctx.query.name
+  );
+});
+
 router.get("/characters/:id", ctx => {
   ctx.body = characters.find(
     character => character.id === Number(ctx.params.id)
