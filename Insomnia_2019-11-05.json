@@ -1,7 +1,7 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2019-11-05T08:19:49.982Z",
+  "__export_date": "2019-11-05T09:10:40.360Z",
   "__export_source": "insomnia.desktop.app:v7.0.3",
   "resources": [
     {
@@ -37,7 +37,7 @@
     },
     {
       "_id": "req_fdb86be76fce4f16a3155fe9d54e73c6",
-      "authentication": { "token": "{{token}}", "type": "bearer" },
+      "authentication": { "token": "{{deep.token}}", "type": "bearer" },
       "body": {},
       "created": 1572159715152,
       "description": "Tu crois que c'est du respect mon garçon ?",
@@ -45,7 +45,7 @@
       "isPrivate": false,
       "metaSortKey": -1571992342528.5,
       "method": "GET",
-      "modified": 1572941974772,
+      "modified": 1572945028943,
       "name": "Get character",
       "parameters": [],
       "parentId": "wrk_5f11d818eac94192bbb3eaf2d9ed348f",
@@ -85,12 +85,18 @@
       "created": 1572158819937,
       "data": {
         "baseUrl": "http://localhost:4000",
+        "deep": {
+          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.sr08LEMNntsBjm8vu8Xv1ciDBmKZUv-dRKiO2efI7KI"
+        },
         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.sr08LEMNntsBjm8vu8Xv1ciDBmKZUv-dRKiO2efI7KI"
       },
-      "dataPropertyOrder": { "&": ["baseUrl", "token"] },
+      "dataPropertyOrder": {
+        "&": ["baseUrl", "token", "deep"],
+        "&~|deep": ["token"]
+      },
       "isPrivate": false,
       "metaSortKey": 1572158819937,
-      "modified": 1572941282141,
+      "modified": 1572944959544,
       "name": "Base Environment",
       "parentId": "wrk_5f11d818eac94192bbb3eaf2d9ed348f",
       "_type": "environment"

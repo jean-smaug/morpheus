@@ -1,6 +1,7 @@
 import got from "got";
 import fs from "fs";
 import _get from "lodash/get";
+import { replaceTemplateByValue } from "./utils"
 import { OutgoingHttpHeaders } from "http";
 
 const INSOMNIA_FILE_NAME = /insomnia.*\.json/i;
@@ -74,22 +75,7 @@ const requests: [] = insomniaFile.resources.filter(
 );
 
 requests.forEach((request: { [key: string]: any }) => {
-  const keys = Object.keys(request);
-  keys.forEach(key => {
-    const execution = VARIABLE.exec(request[key]);
-    if (execution === null) {
-      return;
-    }
-
-    if (!execution.groups) {
-      return;
-    }
-
-    const { variable } = execution.groups;
-    const match = execution[0];
-
-    request[key] = request[key].replace(match, _get(envs, variable));
-  });
+  replaceTemplateByValue(request, envs)
 });
 
 type LowerCasedHttpMethod = "get" | "post" | "put" | "delete";
