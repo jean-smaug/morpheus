@@ -16,8 +16,10 @@ const requestsWithEnvs = requests.map((request: { [key: string]: any }): Request
 
 
 requestsWithEnvs.forEach((request: Request) => {
-  const { method: requestMethod, url: requestUrl, authentication, description } = request;
+  const { method: requestMethod, url: requestUrl, authentication, description, parameters } = request;
   
+  const formattedParameters = new URLSearchParams(Object.keys(parameters).map(parameterIndex => ([parameters[parameterIndex].name, parameters[parameterIndex].value])))
+    
   let requestHeaders: OutgoingHttpHeaders = {}
   if(authentication.type === "bearer" && request.authentication.token) {
     requestHeaders.Authorization = `Bearer ${request.authentication.token}`
@@ -26,7 +28,7 @@ requestsWithEnvs.forEach((request: Request) => {
   it(`${requestMethod} - ${requestUrl}`, async () => {
     try {
       const gotMethod: LowerCasedHttpMethod = requestMethod.toLowerCase() as LowerCasedHttpMethod;
-      const { body, headers, statusCode } = await got[gotMethod](requestUrl, { headers: requestHeaders });
+      const { body, headers, statusCode } = await got[gotMethod](requestUrl, { headers: requestHeaders, query: formattedParameters.toString() });
 
       delete headers.date;
 
