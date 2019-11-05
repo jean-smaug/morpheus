@@ -29,3 +29,5 @@ export interface Environment extends Resource {
     data: object;
     _type: "environment";
 };
+
+export type LowerCasedHttpMethod = "get" | "post" | "put" | "delete";
