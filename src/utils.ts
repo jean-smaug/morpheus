@@ -2,7 +2,7 @@ import _get from "lodash/get";
 
 const VARIABLE = /{{\s*(?<variable>[\w.]+)\s*}}/i;
 
-export function replaceTemplateByValue(template: object, envs: object) {
+export function replaceTemplateByValue(template: { [key: string]: any }, envs: object): { [key: string]: any } {
     const keys = Object.keys(template);
     
     return keys.reduce((acc: object, key: string) => {
