@@ -72,19 +72,18 @@ const requests: [] = insomniaFile.resources.filter(
   (item: Resource) => item._type === "request"
 );
 
-requests.forEach((request: { [key: string]: any }) => {
-  replaceTemplateByValue(request, envs)
+const requestsWithEnvs = requests.map((request: { [key: string]: any }): Request => {
+  return replaceTemplateByValue(request, envs)
 });
 
 type LowerCasedHttpMethod = "get" | "post" | "put" | "delete";
 
-requests.forEach((request: Request) => {
+requestsWithEnvs.forEach((request: Request) => {
   const { method: requestMethod, url: requestUrl, authentication, description } = request;
-
+  
   let requestHeaders: OutgoingHttpHeaders = {}
-
   if(authentication.type === "bearer") {
-    requestHeaders.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.sr08LEMNntsBjm8vu8Xv1ciDBmKZUv-dRKiO2efI7KI`
+    requestHeaders.Authorization = `Bearer ${request.authentication.token}`
   }
 
   it(`${requestMethod} - ${requestUrl}`, async () => {

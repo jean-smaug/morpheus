@@ -11,7 +11,7 @@ export function replaceTemplateByValue(template: { [key: string]: any }, envs: o
       }
 
       const execution = VARIABLE.exec(template[key]);
-  
+
       if (execution === null || !execution.groups) {
         return {... acc, [key]: template[key]};
       }
