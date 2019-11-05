@@ -15,28 +15,42 @@ const requestsWithEnvs = requests.map((request: Request) => {
 });
 
 requestsWithEnvs.forEach((request: Request) => {
-  const { method: requestMethod, url: requestUrl, authentication, description, parameters } = request;
+  const { method: requestMethod, url: requestUrl, authentication, description, parameters, body: requestBody } = request;
   
   const formattedParameters = new URLSearchParams(Object.keys(parameters).map(parameterIndex => ([parameters[parameterIndex].name, parameters[parameterIndex].value])))
     
+  let trueRequestBody: string;
   let requestHeaders: OutgoingHttpHeaders = {}
+  let json = false
   if(authentication.type === "bearer" && request.authentication.token) {
     requestHeaders.Authorization = `Bearer ${request.authentication.token}`
+  }
+
+  if(requestBody.mimeType === "application/graphql") {
+    trueRequestBody = JSON.parse(requestBody.text)
+    json = true
   }
 
   it(`${requestMethod} - ${requestUrl}`, async () => {
     try {
       const gotMethod: LowerCasedHttpMethod = requestMethod.toLowerCase() as LowerCasedHttpMethod;
-      const { body, headers, statusCode } = await got[gotMethod](requestUrl, { headers: requestHeaders, query: formattedParameters.toString() });
+      const { body, headers, statusCode } = 
+        await got[gotMethod](requestUrl, {
+          headers: requestHeaders,
+          query: formattedParameters.toString(),
+          json,
+          body: trueRequestBody
+        });
 
       delete headers.date;
 
       const serializedBody =
-        headers["content-type"] &&
-        headers["content-type"].includes("application/json")
-          ? JSON.parse(body)
-          : body;
-
+      headers["content-type"] &&
+      headers["content-type"].includes("application/json") &&
+      requestBody.mimeType && requestBody.mimeType !== "application/graphql"
+      ? JSON.parse(body)
+      : body;
+      
       expect({ statusCode, headers, body: serializedBody, description }).toMatchSnapshot();
     } catch (error) {
       expect(error).toMatchSnapshot();

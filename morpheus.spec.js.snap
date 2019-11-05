@@ -2,20 +2,7 @@
 
 exports[`GET - http://localhost:5000/characters 1`] = `
 Object {
-  "body": Array [
-    Object {
-      "id": 1,
-      "name": "Luffy",
-    },
-    Object {
-      "id": 2,
-      "name": "Zoro",
-    },
-    Object {
-      "id": 3,
-      "name": "Kirito",
-    },
-  ],
+  "body": "[{\\"id\\":1,\\"name\\":\\"Luffy\\"},{\\"id\\":2,\\"name\\":\\"Zoro\\"},{\\"id\\":3,\\"name\\":\\"Kirito\\"}]",
   "description": "",
   "headers": Object {
     "connection": "close",
@@ -28,10 +15,7 @@ Object {
 
 exports[`GET - http://localhost:5000/characters/1 1`] = `
 Object {
-  "body": Object {
-    "id": 1,
-    "name": "Luffy",
-  },
+  "body": "{\\"id\\":1,\\"name\\":\\"Luffy\\"}",
   "description": "Tu crois que c'est du respect mon garçon ?",
   "headers": Object {
     "connection": "close",
@@ -44,10 +28,7 @@ Object {
 
 exports[`GET - http://localhost:5000/characters/name-querystring 1`] = `
 Object {
-  "body": Object {
-    "id": 3,
-    "name": "Kirito",
-  },
+  "body": "{\\"id\\":3,\\"name\\":\\"Kirito\\"}",
   "description": "Tu crois que c'est du respect mon garçon ?",
   "headers": Object {
     "connection": "close",
@@ -58,6 +39,31 @@ Object {
 }
 `;
 
-exports[`POST - http://localhost:4000 1`] = `[HTTPError: Response code 500 (Internal Server Error)]`;
+exports[`POST - http://localhost:4000 1`] = `
+Object {
+  "body": Object {
+    "data": Object {
+      "books": Array [
+        Object {
+          "title": "Harry Potter and the Chamber of Secrets",
+        },
+        Object {
+          "title": "Jurassic Park",
+        },
+      ],
+    },
+  },
+  "description": "",
+  "headers": Object {
+    "access-control-allow-origin": "*",
+    "connection": "close",
+    "content-length": "99",
+    "content-type": "application/json; charset=utf-8",
+    "etag": "W/\\"63-rqKuwXrbApDAKA6SS5Pb8FfTZUI\\"",
+    "x-powered-by": "Express",
+  },
+  "statusCode": 200,
+}
+`;
 
 exports[`POST - http://localhost:5000/characters 1`] = `[HTTPError: Response code 401 (Unauthorized)]`;

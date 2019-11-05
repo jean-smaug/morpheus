@@ -11,7 +11,8 @@
   "scripts": {
     "test": "jest src/__tests__ --config=local.jest.config.js",
     "watch": "tsc --watch",
-    "server": "nodemon __tests__/server.js"
+    "server": "nodemon __tests__/server.js",
+    "graphql": "nodemon __tests__/graphql.js"
   },
   "dependencies": {
     "got": "9.6.0",
