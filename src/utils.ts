@@ -1,5 +1,5 @@
 import _get from "lodash/get";
-import { Resource, Environment } from "./types"
+import { IResource, IEnvironment } from "./types"
 
 const VARIABLE = /{{\s*(?<variable>[\w.]+)\s*}}/i;
 
@@ -26,9 +26,9 @@ export function replaceTemplateByValue(template: { [key: string]: any }, envs: o
 
 export function getEnvs(insomniaFile: any) {
   return insomniaFile.resources
-    .filter((resource: Resource) => resource._type === "environment")
+    .filter((resource: IResource) => resource._type === "environment")
     .reduce(
-      (acc: object, resource: Environment) => ({ ...acc, ...resource.data }),
+      (acc: object, resource: IEnvironment) => ({ ...acc, ...resource.data }),
       {}
     );
 }
