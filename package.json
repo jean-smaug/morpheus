@@ -10,6 +10,7 @@
   },
   "scripts": {
     "servers": "concurrently 'yarn rest' 'yarn graphql'",
+    "dev": "concurrently 'yarn servers' 'yarn watch'",
     "test": "jest src/__tests__ --config=local.jest.config.js",
     "watch": "tsc --watch",
     "rest": "nodemon tests/rest.js",

@@ -61,6 +61,36 @@ describe("> utils/replaceTemplateByValue", () => {
             deep: { jean: "bogass" }
         })
     })
+
+    it("should replace variable by the real value in array", () => {
+        const template = {
+            deep: [{
+                jean: "{{smaug}}"
+            }]
+        }
+
+        const envs = {
+            smaug: "bogass"
+        }
+
+        expect(replaceTemplateByValue(template, envs)).toEqual({
+            deep: [{ jean: "bogass" }]
+        })
+    })
+
+    it("should returns array", () => {
+        const template = {
+            deep: []
+        }
+
+        const envs = {
+            smaug: "bogass"
+        }
+
+        expect(replaceTemplateByValue(template, envs)).toEqual({
+            deep: []
+        })
+    })
 })
 
 describe('> utils/getHeaders', () => {

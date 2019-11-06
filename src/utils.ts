@@ -1,13 +1,22 @@
 import _get from "lodash/get";
+import { OutgoingHttpHeaders } from "http";
 import { IResource, IEnvironment, IRequest } from "./types"
 
 const VARIABLE = /{{\s*(?<variable>[\w.]+)\s*}}/i;
 
 export function replaceTemplateByValue(template: object, envs: object): IRequest {
     const keys: string[] = Object.keys(template);
-    
+
     return keys.reduce((acc: object, key: string) => {
       if(typeof template[key] === "object") {
+        if(template[key].length !== undefined) {
+          if (template[key].length === 0) {
+            return {...acc, [key]: template[key]}
+          }
+
+          return {...acc, [key]: template[key].map(item => replaceTemplateByValue(item, envs))}
+        }
+
         return { ...acc, [key]: replaceTemplateByValue(template[key], envs)}
       }
 
@@ -47,7 +56,7 @@ export function formatQueryParameters (parameters: { name: string, value: any }[
   ).toString()
 }
 
-export function getHeaders({ authentication, body }: IRequest) {
+export function getHeaders({ authentication, body }: IRequest): OutgoingHttpHeaders {
   let headers: HeadersInit = {}
 
   if(authentication.type === "bearer" && authentication.token) {

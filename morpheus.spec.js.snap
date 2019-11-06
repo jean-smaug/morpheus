@@ -39,31 +39,6 @@ Object {
 }
 `;
 
-exports[`POST - http://localhost:4000 1`] = `
-Object {
-  "body": Object {
-    "data": Object {
-      "books": Array [
-        Object {
-          "title": "Harry Potter and the Chamber of Secrets",
-        },
-        Object {
-          "title": "Jurassic Park",
-        },
-      ],
-    },
-  },
-  "description": "",
-  "headers": Object {
-    "access-control-allow-origin": "*",
-    "connection": "close",
-    "content-length": "99",
-    "content-type": "application/json; charset=utf-8",
-    "etag": "W/\\"63-rqKuwXrbApDAKA6SS5Pb8FfTZUI\\"",
-    "x-powered-by": "Express",
-  },
-  "statusCode": 200,
-}
-`;
+exports[`POST - http://localhost:4000 1`] = `[TypeError: The \`body\` option must be a stream.Readable, string or Buffer]`;
 
 exports[`POST - http://localhost:5000/characters 1`] = `[HTTPError: Response code 401 (Unauthorized)]`;
