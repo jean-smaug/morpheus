@@ -1,4 +1,4 @@
-import { replaceTemplateByValue, formatHeaders } from "../utils"
+import { replaceTemplateByValue, formatHeaders, formatQueryParameters } from "../utils"
 
 describe("> utils/replaceTemplateByValue", () => {
     it("should replace nothing", () => {
@@ -75,5 +75,33 @@ describe('> utils/getHeaders', () => {
         expect(formatHeaders(insomniaHeaders)).toEqual({
             'Content-Type': "application/json"
         })
+    })
+})
+
+describe('> utils/formatQueryParameters', () => {
+    it('should format one query param', () => {
+        const queryParameters = [
+            {
+                "name": "jean",
+                "value": "smaug"
+            }
+        ]
+
+        expect(formatQueryParameters(queryParameters)).toBe("jean=smaug")
+    })
+
+    it('should format one query param', () => {
+        const queryParameters = [
+            {
+                "name": "jean",
+                "value": "smaug"
+            },
+            {
+                "name": "cadeau",
+                "value": "de-noel"
+            }
+        ]
+
+        expect(formatQueryParameters(queryParameters)).toBe("jean=smaug&cadeau=de-noel")
     })
 })

@@ -38,3 +38,12 @@ export function formatHeaders(insomniaHeaders: { name: string, value: any }[]): 
     return { ...acc, [insomniaHeader.name]: insomniaHeader.value }
   }, {})
 }
+
+export function formatQueryParameters (parameters: { name: string, value: any }[]) {
+  return new URLSearchParams(
+    parameters.map(
+      (parameter) => ([parameter.name, parameter.value])
+    )
+  ).toString()
+}
+
