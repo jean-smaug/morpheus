@@ -1,10 +1,10 @@
 import _get from "lodash/get";
-import { IResource, IEnvironment } from "./types"
+import { IResource, IEnvironment, IRequest } from "./types"
 
 const VARIABLE = /{{\s*(?<variable>[\w.]+)\s*}}/i;
 
-export function replaceTemplateByValue(template: { [key: string]: any }, envs: object): { [key: string]: any } {
-    const keys = Object.keys(template);
+export function replaceTemplateByValue(template: object, envs: object): IRequest {
+    const keys: string[] = Object.keys(template);
     
     return keys.reduce((acc: object, key: string) => {
       if(typeof template[key] === "object") {
@@ -21,7 +21,7 @@ export function replaceTemplateByValue(template: { [key: string]: any }, envs: o
       const match = execution[0];
   
       return { ...acc, [key]: template[key].replace(match, _get(envs, variable)) };
-    }, {});
+    }, {}) as IRequest;
 }
 
 export function getEnvs(insomniaFile: any) {

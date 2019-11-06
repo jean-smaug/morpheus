@@ -6,11 +6,11 @@ import insomniaFile from "./file"
 
 const envs = getEnvs(insomniaFile)
 
-const requests: [] = insomniaFile.resources.filter(
+const requests: IRequest[] = insomniaFile.resources.filter(
   (item: IResource) => item._type === "request"
 );
 
-const requestsWithEnvs = requests.map((request: IRequest) => {
+const requestsWithEnvs: IRequest[] = requests.map((request: IRequest) => {
   return replaceTemplateByValue(request, envs)
 });
 
