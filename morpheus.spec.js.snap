@@ -2,7 +2,20 @@
 
 exports[`GET - http://localhost:5000/characters 1`] = `
 Object {
-  "body": "[{\\"id\\":1,\\"name\\":\\"Luffy\\"},{\\"id\\":2,\\"name\\":\\"Zoro\\"},{\\"id\\":3,\\"name\\":\\"Kirito\\"}]",
+  "body": Array [
+    Object {
+      "id": 1,
+      "name": "Luffy",
+    },
+    Object {
+      "id": 2,
+      "name": "Zoro",
+    },
+    Object {
+      "id": 3,
+      "name": "Kirito",
+    },
+  ],
   "description": "",
   "headers": Object {
     "connection": "close",
@@ -15,7 +28,10 @@ Object {
 
 exports[`GET - http://localhost:5000/characters/1 1`] = `
 Object {
-  "body": "{\\"id\\":1,\\"name\\":\\"Luffy\\"}",
+  "body": Object {
+    "id": 1,
+    "name": "Luffy",
+  },
   "description": "Tu crois que c'est du respect mon garçon ?",
   "headers": Object {
     "connection": "close",
@@ -28,7 +44,10 @@ Object {
 
 exports[`GET - http://localhost:5000/characters/name-querystring 1`] = `
 Object {
-  "body": "{\\"id\\":3,\\"name\\":\\"Kirito\\"}",
+  "body": Object {
+    "id": 3,
+    "name": "Kirito",
+  },
   "description": "Tu crois que c'est du respect mon garçon ?",
   "headers": Object {
     "connection": "close",

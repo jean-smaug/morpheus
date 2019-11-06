@@ -38,12 +38,7 @@ requestsWithEnvs.forEach((request: IRequest) => {
 
       delete headers.date;
 
-      const serializedBody =
-      headers["content-type"] &&
-      headers["content-type"].includes("application/json") &&
-      requestBody.mimeType && requestBody.mimeType !== "application/graphql"
-      ? JSON.parse(body)
-      : body;
+      const serializedBody = JSON.parse(body)
       
       expect({ statusCode, headers, body: serializedBody, description }).toMatchSnapshot();
     } catch (error) {
