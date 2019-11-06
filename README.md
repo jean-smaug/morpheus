@@ -2,6 +2,8 @@
 
 Export your [Insomnia](https://insomnia.rest) workspace and test it in command line.
 
+![demo](demo.gif)
+
 ## Installation
 
 ```bash
