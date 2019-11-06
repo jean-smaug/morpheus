@@ -1,7 +1,7 @@
 import got from "got";
 import { OutgoingHttpHeaders } from "http";
 import { IRequest, IResource, LowerCasedHttpMethod } from "./types"
-import { getEnvs, replaceTemplateByValue } from "./utils"
+import { getEnvs, replaceTemplateByValue, formatQueryParameters } from "./utils"
 import insomniaFile from "./file"
 
 const envs = getEnvs(insomniaFile)
@@ -17,7 +17,7 @@ const requestsWithEnvs: IRequest[] = requests.map((request: IRequest) => {
 requestsWithEnvs.forEach((request: IRequest) => {
   const { method: requestMethod, url: requestUrl, authentication, description, parameters, body: requestBody } = request;
   
-  const formattedParameters = new URLSearchParams(Object.keys(parameters).map(parameterIndex => ([parameters[parameterIndex].name, parameters[parameterIndex].value])))
+  const formattedParameters = formatQueryParameters(parameters);
     
   let trueIRequestBody: string;
   let requestHeaders: OutgoingHttpHeaders = {}
@@ -37,7 +37,7 @@ requestsWithEnvs.forEach((request: IRequest) => {
       const { body, headers, statusCode } = 
         await got[gotMethod](requestUrl, {
           headers: requestHeaders,
-          query: formattedParameters.toString(),
+          query: formattedParameters,
           json,
           body: trueIRequestBody
         });
