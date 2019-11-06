@@ -33,7 +33,7 @@ export function getEnvs(insomniaFile: any) {
     );
 }
 
-export function formatHeaders(insomniaHeaders: [{ id: string, name: string, value: any }]): HeadersInit {
+export function formatHeaders(insomniaHeaders: { name: string, value: any }[]): HeadersInit {
   return insomniaHeaders.reduce((acc, insomniaHeader) => {
     return { ...acc, [insomniaHeader.name]: insomniaHeader.value }
   }, {})
