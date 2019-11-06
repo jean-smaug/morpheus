@@ -1,62 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GET - http://localhost:5000/characters 1`] = `
-Object {
-  "body": Array [
-    Object {
-      "id": 1,
-      "name": "Luffy",
-    },
-    Object {
-      "id": 2,
-      "name": "Zoro",
-    },
-    Object {
-      "id": 3,
-      "name": "Kirito",
-    },
-  ],
-  "description": "",
-  "headers": Object {
-    "connection": "close",
-    "content-length": "73",
-    "content-type": "application/json; charset=utf-8",
-  },
-  "statusCode": 200,
-}
-`;
+exports[`GET - http://localhost:5000/auth/basic 1`] = `[HTTPError: Response code 401 (Unauthorized)]`;
 
-exports[`GET - http://localhost:5000/characters/1 1`] = `
-Object {
-  "body": Object {
-    "id": 1,
-    "name": "Luffy",
-  },
-  "description": "Tu crois que c'est du respect mon garçon ?",
-  "headers": Object {
-    "connection": "close",
-    "content-length": "23",
-    "content-type": "application/json; charset=utf-8",
-  },
-  "statusCode": 200,
-}
-`;
+exports[`GET - http://localhost:5000/auth/bearer 1`] = `[HTTPError: Response code 404 (Not Found)]`;
 
-exports[`GET - http://localhost:5000/characters/name-querystring 1`] = `
-Object {
-  "body": Object {
-    "id": 3,
-    "name": "Kirito",
-  },
-  "description": "Tu crois que c'est du respect mon garçon ?",
-  "headers": Object {
-    "connection": "close",
-    "content-length": "24",
-    "content-type": "application/json; charset=utf-8",
-  },
-  "statusCode": 200,
-}
-`;
+exports[`GET - http://localhost:5000/auth/digest 1`] = `[HTTPError: Response code 401 (Unauthorized)]`;
+
+exports[`GET - http://localhost:5000/auth/hawk 1`] = `[HTTPError: Response code 401 (Unauthorized)]`;
+
+exports[`GET - http://localhost:5000/misc/documentation 1`] = `[HTTPError: Response code 404 (Not Found)]`;
+
+exports[`GET - http://localhost:5000/misc/headers 1`] = `[HTTPError: Response code 404 (Not Found)]`;
+
+exports[`GET - http://localhost:5000/misc/query-params 1`] = `[HTTPError: Response code 404 (Not Found)]`;
 
 exports[`POST - http://localhost:4000 1`] = `
 Object {
@@ -85,4 +41,14 @@ Object {
 }
 `;
 
-exports[`POST - http://localhost:5000/characters 1`] = `[HTTPError: Response code 401 (Unauthorized)]`;
+exports[`POST - http://localhost:5000/body/edn 1`] = `[HTTPError: Response code 401 (Unauthorized)]`;
+
+exports[`POST - http://localhost:5000/body/form-url-encoded 1`] = `[HTTPError: Response code 401 (Unauthorized)]`;
+
+exports[`POST - http://localhost:5000/body/json 1`] = `[HTTPError: Response code 401 (Unauthorized)]`;
+
+exports[`POST - http://localhost:5000/body/multipart-form 1`] = `[HTTPError: Response code 401 (Unauthorized)]`;
+
+exports[`POST - http://localhost:5000/body/xml 1`] = `[HTTPError: Response code 401 (Unauthorized)]`;
+
+exports[`POST - http://localhost:5000/body/yaml 1`] = `[HTTPError: Response code 401 (Unauthorized)]`;
