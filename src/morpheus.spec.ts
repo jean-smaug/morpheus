@@ -33,7 +33,7 @@ requestsWithEnvs.forEach((request: IRequest) => {
         await got[gotMethod](requestUrl, {
           headers: requestHeaders,
           query: formattedParameters,
-          body: trueRequestBody
+          body: trueRequestBody ? JSON.stringify(trueRequestBody) : undefined,
         });
 
       delete headers.date;
