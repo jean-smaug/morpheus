@@ -1,4 +1,5 @@
-import { replaceTemplateByValue, formatHeaders, formatQueryParameters } from "../utils"
+import { replaceTemplateByValue, formatHeaders, formatQueryParameters, getHeaders } from "../utils"
+import { IRequest } from "../types"
 
 describe("> utils/replaceTemplateByValue", () => {
     it("should replace nothing", () => {
@@ -103,5 +104,38 @@ describe('> utils/formatQueryParameters', () => {
         ]
 
         expect(formatQueryParameters(queryParameters)).toBe("jean=smaug&cadeau=de-noel")
+    })
+})
+
+describe('> utils/getHeaders', () => {
+    const baseRequest: IRequest = {
+        "_id": "req_d650433ac4264b6e9f611c54332789c2",
+        "authentication": {},
+        "body": {},
+        "description": "",
+        "headers": [],
+        "isPrivate": false,
+        "method": "GET",
+        "name": "Get character by name",
+        "parameters": [],
+        "settingDisableRenderRequestBody": false,
+        "settingEncodeUrl": true,
+        "settingRebuildPath": true,
+        "settingSendCookies": true,
+        "settingStoreCookies": true,
+        "url": "{{baseUrl}}/characters/name-querystring",
+        "_type": "request"
+      };
+
+    it('should\'nt return headers', () => {
+        expect(getHeaders(baseRequest)).toEqual({})
+    })
+    
+    it('should return headers for token auth', () => {
+        expect(getHeaders({...baseRequest, authentication: { token: "mein-token", type: "bearer" }})).toEqual({ Authorization: "Bearer mein-token" })
+    })
+
+    it('should set headers for graphql query', () => {
+        expect(getHeaders({...baseRequest, body: { mimeType: "application/graphql", text: "{ foo, bar }" } })).toEqual({ "Content-Type": "application/json" })
     })
 })

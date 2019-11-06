@@ -47,3 +47,16 @@ export function formatQueryParameters (parameters: { name: string, value: any }[
   ).toString()
 }
 
+export function getHeaders({ authentication, body }: IRequest) {
+  let headers: HeadersInit = {}
+
+  if(authentication.type === "bearer" && authentication.token) {
+    headers.Authorization = `Bearer ${authentication.token}`
+  }
+
+  if(body.mimeType === "application/graphql" && body.text) {
+    headers["Content-Type"] = "application/json"
+  }
+
+  return headers;
+}

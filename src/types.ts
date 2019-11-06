@@ -12,12 +12,16 @@ export interface IRequest extends IResource {
     };
     body: {
         mimeType?: string;
-        text?:string;
+        text?: string;
     };
     headers: [];
     isPrivate: false;
     method: string;
-    parameters: [];
+    parameters: {
+        "id": string;
+        "name": string;
+        "value": string;
+    }[],
     settingDisableRenderRequestBody: boolean;
     settingEncodeUrl: boolean;
     settingRebuildPath: boolean;

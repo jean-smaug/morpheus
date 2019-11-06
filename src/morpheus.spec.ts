@@ -1,7 +1,7 @@
 import got from "got";
 import { OutgoingHttpHeaders } from "http";
 import { IRequest, IResource, LowerCasedHttpMethod } from "./types"
-import { getEnvs, replaceTemplateByValue, formatQueryParameters } from "./utils"
+import { getEnvs, replaceTemplateByValue, formatQueryParameters, getHeaders } from "./utils"
 import insomniaFile from "./file"
 
 const envs = getEnvs(insomniaFile)
@@ -15,20 +15,15 @@ const requestsWithEnvs: IRequest[] = requests.map((request: IRequest) => {
 });
 
 requestsWithEnvs.forEach((request: IRequest) => {
-  const { method: requestMethod, url: requestUrl, authentication, description, parameters, body: requestBody } = request;
+  const { method: requestMethod, url: requestUrl, description, parameters, body: requestBody } = request;
   
   const formattedParameters = formatQueryParameters(parameters);
     
-  let trueIRequestBody: string;
-  let requestHeaders: OutgoingHttpHeaders = {}
-  let json = false
-  if(authentication.type === "bearer" && request.authentication.token) {
-    requestHeaders.Authorization = `Bearer ${request.authentication.token}`
-  }
+  let trueRequestBody: string;
+  let requestHeaders: OutgoingHttpHeaders = getHeaders(request)
 
   if(requestBody.mimeType === "application/graphql" && requestBody.text) {
-    trueIRequestBody = JSON.parse(requestBody.text)
-    json = true
+    trueRequestBody = JSON.parse(requestBody.text)
   }
 
   it(`${requestMethod} - ${requestUrl}`, async () => {
@@ -38,8 +33,7 @@ requestsWithEnvs.forEach((request: IRequest) => {
         await got[gotMethod](requestUrl, {
           headers: requestHeaders,
           query: formattedParameters,
-          json,
-          body: trueIRequestBody
+          body: trueRequestBody
         });
 
       delete headers.date;
