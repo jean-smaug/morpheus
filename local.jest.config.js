@@ -8,4 +8,7 @@ module.exports = {
       diagnostics: false,
     },
   },
+  collectCoverageFrom: [
+    'src/**/*.ts',
+  ],
 };
