@@ -1,33 +1,33 @@
 import got from "got";
 import { OutgoingHttpHeaders } from "http";
-import { Request, Resource, LowerCasedHttpMethod } from "./types"
+import { IRequest, IResource, LowerCasedHttpMethod } from "./types"
 import { getEnvs, replaceTemplateByValue } from "./utils"
 import insomniaFile from "./file"
 
 const envs = getEnvs(insomniaFile)
 
 const requests: [] = insomniaFile.resources.filter(
-  (item: Resource) => item._type === "request"
+  (item: IResource) => item._type === "request"
 );
 
-const requestsWithEnvs = requests.map((request: Request) => {
+const requestsWithEnvs = requests.map((request: IRequest) => {
   return replaceTemplateByValue(request, envs)
 });
 
-requestsWithEnvs.forEach((request: Request) => {
+requestsWithEnvs.forEach((request: IRequest) => {
   const { method: requestMethod, url: requestUrl, authentication, description, parameters, body: requestBody } = request;
   
   const formattedParameters = new URLSearchParams(Object.keys(parameters).map(parameterIndex => ([parameters[parameterIndex].name, parameters[parameterIndex].value])))
     
-  let trueRequestBody: string;
+  let trueIRequestBody: string;
   let requestHeaders: OutgoingHttpHeaders = {}
   let json = false
   if(authentication.type === "bearer" && request.authentication.token) {
     requestHeaders.Authorization = `Bearer ${request.authentication.token}`
   }
 
-  if(requestBody.mimeType === "application/graphql") {
-    trueRequestBody = JSON.parse(requestBody.text)
+  if(requestBody.mimeType === "application/graphql" && requestBody.text) {
+    trueIRequestBody = JSON.parse(requestBody.text)
     json = true
   }
 
@@ -39,7 +39,7 @@ requestsWithEnvs.forEach((request: Request) => {
           headers: requestHeaders,
           query: formattedParameters.toString(),
           json,
-          body: trueRequestBody
+          body: trueIRequestBody
         });
 
       delete headers.date;

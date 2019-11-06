@@ -1,16 +1,19 @@
-export interface Resource {
+export interface IResource {
     _id: string;
     description: string;
     name: string;
     _type: string;
 };
 
-export interface Request extends Resource {
+export interface IRequest extends IResource {
     authentication: {
         type?: string;
         token?: string;
     };
-    body: {};
+    body: {
+        mimeType?: string;
+        text?:string;
+    };
     headers: [];
     isPrivate: false;
     method: string;
@@ -24,7 +27,7 @@ export interface Request extends Resource {
     _type: "request";
 };
 
-export interface Environment extends Resource {
+export interface IEnvironment extends IResource {
     color: null;
     data: object;
     _type: "environment";
