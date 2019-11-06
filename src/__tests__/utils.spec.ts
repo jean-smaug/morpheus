@@ -1,6 +1,6 @@
-import { replaceTemplateByValue } from "../utils"
+import { replaceTemplateByValue, formatHeaders } from "../utils"
 
-describe("utils", () => {
+describe("> utils/replaceTemplateByValue", () => {
     it("should replace nothing", () => {
         const template = {
             jean: "smaug"
@@ -58,6 +58,22 @@ describe("utils", () => {
 
         expect(replaceTemplateByValue(template, envs)).toEqual({
             deep: { jean: "bogass" }
+        })
+    })
+})
+
+describe('> utils/getHeaders', () => {
+    it('should format headers', () => {
+        const insomniaHeaders = [
+            {
+                "id": "pair_d070764b7a584d9891ab8f5d5781868d",
+                "name": "Content-Type",
+                "value": "application/json"
+            }
+        ]
+
+        expect(formatHeaders(insomniaHeaders)).toEqual({
+            'Content-Type': "application/json"
         })
     })
 })
