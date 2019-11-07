@@ -1,7 +1,7 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2019-11-06T15:36:08.583Z",
+  "__export_date": "2019-11-07T10:08:40.776Z",
   "__export_source": "insomnia.desktop.app:v7.0.3",
   "resources": [
     {
@@ -19,7 +19,7 @@
       "isPrivate": false,
       "metaSortKey": -1573053068924,
       "method": "GET",
-      "modified": 1573053731601,
+      "modified": 1573111264075,
       "name": "Basic",
       "parameters": [],
       "parentId": "fld_8994f6e8e4724c0490a0fc9d0166338e",
@@ -82,7 +82,7 @@
     {
       "_id": "req_93ee877f32ff4a4099c2e2a2de740abd",
       "authentication": {
-        "prefix": "Prefix",
+        "prefix": "",
         "token": "{{auth.token}}",
         "type": "bearer"
       },
@@ -93,7 +93,7 @@
       "isPrivate": false,
       "metaSortKey": -1572987121683.5,
       "method": "GET",
-      "modified": 1573053759250,
+      "modified": 1573111462293,
       "name": "Bearer token",
       "parameters": [],
       "parentId": "fld_8994f6e8e4724c0490a0fc9d0166338e",
@@ -109,6 +109,7 @@
       "_id": "req_1c01e9917f844252ab45a99f702ec3b4",
       "authentication": {
         "algorithm": "sha256",
+        "ext": "",
         "id": "{{auth.id}}",
         "key": "{{auth.key}}",
         "type": "hawk"
@@ -120,7 +121,7 @@
       "isPrivate": false,
       "metaSortKey": -1572976130476.75,
       "method": "GET",
-      "modified": 1573054011010,
+      "modified": 1573115349283,
       "name": "Hawk",
       "parameters": [],
       "parentId": "fld_8994f6e8e4724c0490a0fc9d0166338e",
@@ -388,11 +389,7 @@
     },
     {
       "_id": "req_fdb86be76fce4f16a3155fe9d54e73c6",
-      "authentication": {
-        "prefix": "Prefix",
-        "token": "{{auth.token}}",
-        "type": "bearer"
-      },
+      "authentication": {},
       "body": {},
       "created": 1572159715152,
       "description": "",
@@ -400,7 +397,7 @@
       "isPrivate": false,
       "metaSortKey": -1571992342528.5,
       "method": "GET",
-      "modified": 1573054471938,
+      "modified": 1573121182512,
       "name": "Query params",
       "parameters": [
         {
@@ -437,11 +434,7 @@
     },
     {
       "_id": "req_8d6b3c2eccf647ac85ecd188be03388d",
-      "authentication": {
-        "prefix": "Prefix",
-        "token": "{{auth.token}}",
-        "type": "bearer"
-      },
+      "authentication": {},
       "body": {},
       "created": 1573054450273,
       "description": "",
@@ -460,7 +453,7 @@
       "isPrivate": false,
       "metaSortKey": -1571971427863.5625,
       "method": "GET",
-      "modified": 1573054518286,
+      "modified": 1573121178785,
       "name": "Headers",
       "parameters": [],
       "parentId": "fld_7992081232ed4dba90ee6b8f8c48ee56",
@@ -474,11 +467,7 @@
     },
     {
       "_id": "req_6a88cfb7b55b4f8d9b40d1462c4486e6",
-      "authentication": {
-        "prefix": "Prefix",
-        "token": "{{auth.token}}",
-        "type": "bearer"
-      },
+      "authentication": {},
       "body": {},
       "created": 1573054482293,
       "description": "Tu crois que c'est du respect mon garçon ?",
@@ -486,7 +475,7 @@
       "isPrivate": false,
       "metaSortKey": -1571960970531.0938,
       "method": "GET",
-      "modified": 1573054507578,
+      "modified": 1573121174500,
       "name": "Documentation",
       "parameters": [],
       "parentId": "fld_7992081232ed4dba90ee6b8f8c48ee56",

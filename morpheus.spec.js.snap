@@ -71,7 +71,6 @@ Object {
   "description": "",
   "headers": Object {
     "accept-encoding": "gzip, deflate",
-    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.sr08LEMNntsBjm8vu8Xv1ciDBmKZUv-dRKiO2efI7KI",
     "connection": "close",
     "content-length": "7",
     "content-type": "text/plain; charset=utf-8",
