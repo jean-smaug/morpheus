@@ -10,7 +10,8 @@ const options = {
 
 const args = process.argv.filter(arg => arg.startsWith("-") || arg.startsWith("--"))
 
-const shouldWatch = args.includes("--watch") || args.includes("-w") ? true : false
+const shouldWatch = args.includes("--watch") || args.includes("-w")
+const shouldUpdateSnapshot = args.includes("--updateSnapshot") || args.includes("-u")
 
 jest
   .runCLI({
@@ -18,7 +19,7 @@ jest
       roots: ["./dist"],
       watch: shouldWatch,
       watchAll: shouldWatch,
-      updateSnapshot: true
+      updateSnapshot: shouldUpdateSnapshot
     }, 
     options.projects
   )
