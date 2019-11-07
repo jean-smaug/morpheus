@@ -60,7 +60,7 @@ router.get("/misc/headers", ctx => {
   delete requestHeaders['user-agent']
 
   ctx.set(requestHeaders)
-  ctx.status = 201
+  ctx.status = 200
 })
 
 router.get("/misc/documentation", ctx => {
