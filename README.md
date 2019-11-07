@@ -7,12 +7,12 @@ Export your [Insomnia](https://insomnia.rest) workspace and test it in command l
 ## Installation
 
 ```bash
-yarn add @lano/morpheus
+yarn add -DE @lano/morpheus
 ```
 
 ## Usage
 
-By default Morpheus will look for a file named `/Insomnia.*\.json/i`
+By default Morpheus search look for a file named `/Insomnia.*\.json/i`
 
 ```json
 {
@@ -28,6 +28,16 @@ You can specify a file name using the `FILE` env variable
 {
   "scripts": {
     "test:api": "FILE=./__tests__/Insomnia.json morpheus"
+  }
+}
+```
+
+Because Morpheus is built on the top of Jest, you can use `--watch` and `--updateSnapshot` options. You can also use the short forms `-u` and `-w`.
+
+```json
+{
+  "scripts": {
+    "test:api": "morpheus --watch --updateSnapshot"
   }
 }
 ```
