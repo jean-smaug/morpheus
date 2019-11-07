@@ -38,17 +38,15 @@ The generated snapshot will look like the following. Keep in mind that the `date
 
 ```js
 Object {
-  "body": Object {
-    "id": 1,
-    "name": "Luffy",
-  },
-  "description": "Tu crois que c'est du respect mon garçon ?",
+  "body": "OK",
+  "description": "",
   "headers": Object {
     "connection": "close",
-    "content-length": "23",
-    "content-type": "application/json; charset=utf-8",
+    "content-length": "2",
+    "content-type": "text/plain; charset=utf-8",
   },
   "statusCode": 200,
+  "url": "http://localhost:5000/auth/basic",
 }
 ```
 

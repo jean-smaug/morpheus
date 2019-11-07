@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GET - http://localhost:5000/auth/basic 1`] = `
+exports[`GET - Basic 1`] = `
 Object {
   "body": "OK",
   "description": "",
@@ -10,10 +10,11 @@ Object {
     "content-type": "text/plain; charset=utf-8",
   },
   "statusCode": 200,
+  "url": "http://localhost:5000/auth/basic",
 }
 `;
 
-exports[`GET - http://localhost:5000/auth/bearer 1`] = `
+exports[`GET - Bearer token 1`] = `
 Object {
   "body": "OK",
   "description": "",
@@ -23,10 +24,11 @@ Object {
     "content-type": "text/plain; charset=utf-8",
   },
   "statusCode": 200,
+  "url": "http://localhost:5000/auth/bearer",
 }
 `;
 
-exports[`GET - http://localhost:5000/auth/digest 1`] = `
+exports[`GET - Digest 1`] = `
 Object {
   "body": "OK",
   "description": "",
@@ -36,23 +38,11 @@ Object {
     "content-type": "text/plain; charset=utf-8",
   },
   "statusCode": 200,
+  "url": "http://localhost:5000/auth/digest",
 }
 `;
 
-exports[`GET - http://localhost:5000/auth/hawk 1`] = `
-Object {
-  "body": "OK",
-  "description": "",
-  "headers": Object {
-    "connection": "close",
-    "content-length": "2",
-    "content-type": "text/plain; charset=utf-8",
-  },
-  "statusCode": 200,
-}
-`;
-
-exports[`GET - http://localhost:5000/misc/documentation 1`] = `
+exports[`GET - Documentation 1`] = `
 Object {
   "body": "OK",
   "description": "Tu crois que c'est du respect mon garçon ?",
@@ -62,10 +52,25 @@ Object {
     "content-type": "text/plain; charset=utf-8",
   },
   "statusCode": 200,
+  "url": "http://localhost:5000/misc/documentation",
 }
 `;
 
-exports[`GET - http://localhost:5000/misc/headers 1`] = `
+exports[`GET - Hawk 1`] = `
+Object {
+  "body": "OK",
+  "description": "",
+  "headers": Object {
+    "connection": "close",
+    "content-length": "2",
+    "content-type": "text/plain; charset=utf-8",
+  },
+  "statusCode": 200,
+  "url": "http://localhost:5000/auth/hawk",
+}
+`;
+
+exports[`GET - Headers 1`] = `
 Object {
   "body": "OK",
   "description": "",
@@ -79,10 +84,11 @@ Object {
     "jean": "smaug",
   },
   "statusCode": 200,
+  "url": "http://localhost:5000/misc/headers",
 }
 `;
 
-exports[`GET - http://localhost:5000/misc/query-params 1`] = `
+exports[`GET - Query params 1`] = `
 Object {
   "body": Object {
     "query": Object {
@@ -97,10 +103,37 @@ Object {
     "content-type": "application/json; charset=utf-8",
   },
   "statusCode": 200,
+  "url": "http://localhost:5000/misc/query-params",
 }
 `;
 
-exports[`POST - http://localhost:4000 1`] = `
+exports[`POST - EDN 1`] = `
+Object {
+  "body": "",
+  "description": "",
+  "headers": Object {
+    "connection": "close",
+  },
+  "statusCode": 204,
+  "url": "http://localhost:5000/body/edn",
+}
+`;
+
+exports[`POST - Form URL encoded 1`] = `
+Object {
+  "body": Object {},
+  "description": "",
+  "headers": Object {
+    "connection": "close",
+    "content-length": "2",
+    "content-type": "application/json; charset=utf-8",
+  },
+  "statusCode": 200,
+  "url": "http://localhost:5000/body/form-url-encoded",
+}
+`;
+
+exports[`POST - GraphQL 1`] = `
 Object {
   "body": Object {
     "data": Object {
@@ -124,34 +157,11 @@ Object {
     "x-powered-by": "Express",
   },
   "statusCode": 200,
+  "url": "http://localhost:4000",
 }
 `;
 
-exports[`POST - http://localhost:5000/body/edn 1`] = `
-Object {
-  "body": "",
-  "description": "",
-  "headers": Object {
-    "connection": "close",
-  },
-  "statusCode": 204,
-}
-`;
-
-exports[`POST - http://localhost:5000/body/form-url-encoded 1`] = `
-Object {
-  "body": Object {},
-  "description": "",
-  "headers": Object {
-    "connection": "close",
-    "content-length": "2",
-    "content-type": "application/json; charset=utf-8",
-  },
-  "statusCode": 200,
-}
-`;
-
-exports[`POST - http://localhost:5000/body/json 1`] = `
+exports[`POST - JSON 1`] = `
 Object {
   "body": Object {
     "jean": "smaug",
@@ -163,10 +173,11 @@ Object {
     "content-type": "application/json; charset=utf-8",
   },
   "statusCode": 200,
+  "url": "http://localhost:5000/body/json",
 }
 `;
 
-exports[`POST - http://localhost:5000/body/multipart-form 1`] = `
+exports[`POST - Multipart form 1`] = `
 Object {
   "body": Object {},
   "description": "",
@@ -176,10 +187,11 @@ Object {
     "content-type": "application/json; charset=utf-8",
   },
   "statusCode": 200,
+  "url": "http://localhost:5000/body/multipart-form",
 }
 `;
 
-exports[`POST - http://localhost:5000/body/xml 1`] = `
+exports[`POST - XML 1`] = `
 Object {
   "body": "",
   "description": "",
@@ -187,10 +199,11 @@ Object {
     "connection": "close",
   },
   "statusCode": 204,
+  "url": "http://localhost:5000/body/xml",
 }
 `;
 
-exports[`POST - http://localhost:5000/body/yaml 1`] = `
+exports[`POST - YAML 1`] = `
 Object {
   "body": "",
   "description": "",
@@ -198,5 +211,6 @@ Object {
     "connection": "close",
   },
   "statusCode": 204,
+  "url": "http://localhost:5000/body/yaml",
 }
 `;

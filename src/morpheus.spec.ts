@@ -30,7 +30,7 @@ requestsWithEnvs.forEach((request: IRequest) => {
     trueRequestBody = requestBody.text
   }
 
-  it(`${requestMethod} - ${requestUrl}`, async () => {
+  it(`${requestMethod} - ${request.name}`, async () => {
     try {
       const gotMethod: LowerCasedHttpMethod = requestMethod.toLowerCase() as LowerCasedHttpMethod;
       const { body, headers, statusCode } = 
@@ -47,7 +47,7 @@ requestsWithEnvs.forEach((request: IRequest) => {
         serializedBody = JSON.parse(body)
       }
 
-      expect({ statusCode, headers, body: serializedBody, description }).toMatchSnapshot();
+      expect({ url: requestUrl, statusCode, headers, body: serializedBody, description }).toMatchSnapshot();
     } catch (error) {
       expect(error).toMatchSnapshot();
     }

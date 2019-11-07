@@ -57,7 +57,7 @@ export function formatQueryParameters (parameters: { name: string, value: any }[
   ).toString()
 }
 
-export function getHeaders({ authentication, body, headers: requestHeaders }: IRequest): OutgoingHttpHeaders {
+export function getHeaders({ authentication, headers: requestHeaders }: IRequest): OutgoingHttpHeaders {
   const formatedRequestHeaders = formatHeaders(requestHeaders)
   let headers: { [key: string]: string } = formatedRequestHeaders
 
