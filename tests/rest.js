@@ -1,33 +1,67 @@
 const Koa = require("koa");
-const Router = require("koa-router");
+const Router = require("@koa/router");
 const jwt = require("koa-jwt");
-const characters = require("./characters.json");
+const basicAuth = require('koa-basic-auth');
 
 const app = new Koa();
 const router = new Router();
 
+
+//== Auth ==//
+router.get("/auth/basic", basicAuth({ name: "jean", pass: "smaug" }), ctx => {
+  ctx.status = 200;
+});
+
+router.get("/auth/digest", ctx => {
+  ctx.status = 200;
+});
+
 // Valid JWT --> eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.sr08LEMNntsBjm8vu8Xv1ciDBmKZUv-dRKiO2efI7KI
-app.use(jwt({ secret: "SECRET" }));
-
-router.get("/characters", ctx => {
-  ctx.body = characters;
+router.get("/auth/bearer", jwt({ secret: "SECRET" }), ctx => {
+  ctx.status = 200;
 });
 
-router.get("/characters/name-querystring", ctx => {
-  ctx.body = characters.find(
-    character => character.name === ctx.query.name
-  );
+router.get("/auth/hawk", ctx => {
+  ctx.status = 200;
 });
 
-router.get("/characters/:id", ctx => {
-  ctx.body = characters.find(
-    character => character.id === Number(ctx.params.id)
-  );
-});
+//== Body ==//
+router.post("/body/multipart-form", ctx => {
+  ctx.body = ctx.request.body
+})
 
-router.post("/characters", ctx => {
-  ctx.status = 201;
-});
+router.post("/body/form-url-encoded", ctx => {
+  ctx.body = ctx.request.body
+})
+
+router.post("/body/json", ctx => {
+  ctx.body = ctx.request.body
+})
+
+router.post("/body/xml", ctx => {
+  ctx.body = ctx.request.body
+})
+
+router.post("/body/yaml", ctx => {
+  ctx.body = ctx.request.body
+})
+
+router.post("/body/edn", ctx => {
+  ctx.body = ctx.request.body
+})
+
+//== Misc ==//
+router.get("/misc/query-params", ctx => {
+  ctx.body = ctx.request.body
+})
+
+router.get("/misc/headers", ctx => {
+  ctx.body = ctx.request.body
+})
+
+router.get("/misc/documentation", ctx => {
+  ctx.body = ctx.request.body
+})
 
 app.use(router.routes());
 app.use(router.allowedMethods());
