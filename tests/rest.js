@@ -2,6 +2,7 @@ const Koa = require("koa");
 const Router = require("@koa/router");
 const jwt = require("koa-jwt");
 const basicAuth = require('koa-basic-auth');
+const koaBody = require('koa-body');
 
 const app = new Koa();
 const router = new Router();
@@ -29,11 +30,11 @@ router.post("/body/multipart-form", ctx => {
   ctx.body = ctx.request.body
 })
 
-router.post("/body/form-url-encoded", ctx => {
+router.post("/body/form-url-encoded", koaBody(), ctx => {
   ctx.body = ctx.request.body
 })
 
-router.post("/body/json", ctx => {
+router.post("/body/json", koaBody(), ctx => {
   ctx.body = ctx.request.body
 })
 

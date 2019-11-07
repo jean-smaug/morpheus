@@ -19,26 +19,30 @@ requestsWithEnvs.forEach((request: IRequest) => {
   
   const formattedParameters = formatQueryParameters(parameters);
     
-  let trueRequestBody: string;
+  let trueRequestBody: string | undefined = undefined;
   let requestHeaders: OutgoingHttpHeaders = getHeaders(request)
 
   if(requestBody.mimeType === "application/graphql" && requestBody.text) {
-    trueRequestBody = JSON.parse(requestBody.text)
+    trueRequestBody = requestBody.text
+  }
+
+  if(requestBody.mimeType === "application/json" && requestBody.text) {
+    trueRequestBody = requestBody.text
   }
 
   it(`${requestMethod} - ${requestUrl}`, async () => {
     try {
       const gotMethod: LowerCasedHttpMethod = requestMethod.toLowerCase() as LowerCasedHttpMethod;
       const { body, headers, statusCode } = 
-        await got[gotMethod](requestUrl, {
-          headers: requestHeaders,
+      await got[gotMethod](requestUrl, {
+        headers: requestHeaders,
           query: formattedParameters,
-          body: trueRequestBody ? JSON.stringify(trueRequestBody) : undefined,
+          body: trueRequestBody,
         });
 
-      delete headers.date;
-
-      let serializedBody = body
+        delete headers.date;
+        
+        let serializedBody = body
       if(headers["content-type"] && headers["content-type"].includes("application/json")) {
         serializedBody = JSON.parse(body)
       }

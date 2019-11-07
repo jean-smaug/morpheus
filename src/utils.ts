@@ -73,5 +73,9 @@ export function getHeaders({ authentication, body }: IRequest): OutgoingHttpHead
     headers["Content-Type"] = "application/json"
   }
 
+  if(body.mimeType === "application/json" && body.text) {
+    headers["Content-Type"] = "application/json"
+  }
+
   return headers;
 }

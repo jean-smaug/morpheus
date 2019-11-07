@@ -125,23 +125,29 @@ Object {
 
 exports[`POST - http://localhost:5000/body/form-url-encoded 1`] = `
 Object {
-  "body": "",
+  "body": Object {},
   "description": "",
   "headers": Object {
     "connection": "close",
+    "content-length": "2",
+    "content-type": "application/json; charset=utf-8",
   },
-  "statusCode": 204,
+  "statusCode": 200,
 }
 `;
 
 exports[`POST - http://localhost:5000/body/json 1`] = `
 Object {
-  "body": "",
+  "body": Object {
+    "jean": "smaug",
+  },
   "description": "",
   "headers": Object {
     "connection": "close",
+    "content-length": "16",
+    "content-type": "application/json; charset=utf-8",
   },
-  "statusCode": 204,
+  "statusCode": 200,
 }
 `;
 
