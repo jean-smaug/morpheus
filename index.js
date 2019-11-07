@@ -17,7 +17,8 @@ jest
       ...options,
       roots: ["./dist"],
       watch: shouldWatch,
-      watchAll: shouldWatch
+      watchAll: shouldWatch,
+      updateSnapshot: true
     }, 
     options.projects
   )
