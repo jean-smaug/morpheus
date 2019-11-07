@@ -43,7 +43,7 @@ export function getEnvs(insomniaFile: any) {
     );
 }
 
-export function formatHeaders(insomniaHeaders: { name: string, value: any }[]): HeadersInit {
+export function formatHeaders(insomniaHeaders: { name: string, value: any }[]): { [key: string]: string } {
   return insomniaHeaders.reduce((acc, insomniaHeader) => {
     return { ...acc, [insomniaHeader.name]: insomniaHeader.value }
   }, {})
@@ -57,8 +57,9 @@ export function formatQueryParameters (parameters: { name: string, value: any }[
   ).toString()
 }
 
-export function getHeaders({ authentication, body }: IRequest): OutgoingHttpHeaders {
-  let headers: HeadersInit = {}
+export function getHeaders({ authentication, body, headers: requestHeaders }: IRequest): OutgoingHttpHeaders {
+  const formatedRequestHeaders = formatHeaders(requestHeaders)
+  let headers: { [key: string]: string } = formatedRequestHeaders
 
   if(authentication.type === "bearer" && authentication.token) {
     headers.Authorization = `Bearer ${authentication.token}`
@@ -67,14 +68,6 @@ export function getHeaders({ authentication, body }: IRequest): OutgoingHttpHead
   if(authentication.type === "basic" && authentication.username && authentication.password) {
     const basicToken = Buffer.from(`${authentication.username}:${authentication.password}`).toString("base64")
     headers.Authorization = `Basic ${basicToken}`
-  }
-
-  if(body.mimeType === "application/graphql" && body.text) {
-    headers["Content-Type"] = "application/json"
-  }
-
-  if(body.mimeType === "application/json" && body.text) {
-    headers["Content-Type"] = "application/json"
   }
 
   return headers;
