@@ -56,7 +56,11 @@ router.get("/misc/query-params", ctx => {
 })
 
 router.get("/misc/headers", ctx => {
-  ctx.status = 200
+  const requestHeaders = ctx.request.headers
+  delete requestHeaders['user-agent']
+
+  ctx.set(requestHeaders)
+  ctx.status = 201
 })
 
 router.get("/misc/documentation", ctx => {
