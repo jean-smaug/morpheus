@@ -8,8 +8,19 @@ const options = {
   silent: true
 };
 
+const args = process.argv.filter(arg => arg.startsWith("-") || arg.startsWith("--"))
+
+const shouldWatch = args.includes("--watch") || args.includes("-w") ? true : false
+
 jest
-  .runCLI({ ...options, roots: ["./dist"] }, options.projects)
+  .runCLI({
+      ...options,
+      roots: ["./dist"],
+      watch: shouldWatch,
+      watchAll: shouldWatch
+    }, 
+    options.projects
+  )
   .then(() => {
     console.log("success");
   })

@@ -15,7 +15,7 @@
     "watch": "tsc --watch",
     "rest": "nodemon tests/rest.js",
     "graphql": "nodemon tests/graphql.js",
-    "morpheus": "jest dist/morpheus.spec.js"
+    "morpheus": "node index.js"
   },
   "dependencies": {
     "got": "9.6.0",
