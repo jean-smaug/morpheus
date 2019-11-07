@@ -6,7 +6,6 @@ const basicAuth = require('koa-basic-auth');
 const app = new Koa();
 const router = new Router();
 
-
 //== Auth ==//
 router.get("/auth/basic", basicAuth({ name: "jean", pass: "smaug" }), ctx => {
   ctx.status = 200;

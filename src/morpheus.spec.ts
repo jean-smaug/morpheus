@@ -38,7 +38,10 @@ requestsWithEnvs.forEach((request: IRequest) => {
 
       delete headers.date;
 
-      const serializedBody = JSON.parse(body)
+      let serializedBody = body
+      if(headers["content-type"] && headers["content-type"].includes("application/json")) {
+        serializedBody = JSON.parse(body)
+      }
       
       expect({ statusCode, headers, body: serializedBody, description }).toMatchSnapshot();
     } catch (error) {

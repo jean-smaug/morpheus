@@ -1,5 +1,6 @@
 import _get from "lodash/get";
 import { OutgoingHttpHeaders } from "http";
+import crypto from "crypto";
 import { IResource, IEnvironment, IRequest } from "./types"
 
 const VARIABLE = /{{\s*(?<variable>[\w.]+)\s*}}/i;
@@ -61,6 +62,11 @@ export function getHeaders({ authentication, body }: IRequest): OutgoingHttpHead
 
   if(authentication.type === "bearer" && authentication.token) {
     headers.Authorization = `Bearer ${authentication.token}`
+  }
+
+  if(authentication.type === "basic" && authentication.username && authentication.password) {
+    const basicToken = Buffer.from(`${authentication.username}:${authentication.password}`).toString("base64")
+    headers.Authorization = `Basic ${basicToken}`
   }
 
   if(body.mimeType === "application/graphql" && body.text) {

@@ -9,6 +9,8 @@ export interface IRequest extends IResource {
     authentication: {
         type?: string;
         token?: string;
+        username?: string;
+        password?: string;
     };
     body: {
         mimeType?: string;
