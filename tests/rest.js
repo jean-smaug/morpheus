@@ -52,15 +52,15 @@ router.post("/body/edn", ctx => {
 
 //== Misc ==//
 router.get("/misc/query-params", ctx => {
-  ctx.body = ctx.request.body
+  ctx.status = 200
 })
 
 router.get("/misc/headers", ctx => {
-  ctx.body = ctx.request.body
+  ctx.status = 200
 })
 
 router.get("/misc/documentation", ctx => {
-  ctx.body = ctx.request.body
+  ctx.status = 200
 })
 
 app.use(router.routes());
