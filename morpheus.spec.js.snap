@@ -67,29 +67,34 @@ Object {
 
 exports[`GET - http://localhost:5000/misc/headers 1`] = `
 Object {
-  "body": "Created",
+  "body": "OK",
   "description": "",
   "headers": Object {
     "accept-encoding": "gzip, deflate",
     "connection": "close",
-    "content-length": "7",
+    "content-length": "2",
     "content-type": "text/plain; charset=utf-8",
     "host": "localhost:5000",
     "issou": "la chancla",
     "jean": "smaug",
   },
-  "statusCode": 201,
+  "statusCode": 200,
 }
 `;
 
 exports[`GET - http://localhost:5000/misc/query-params 1`] = `
 Object {
-  "body": "OK",
+  "body": Object {
+    "query": Object {
+      "issou": "la chancla",
+      "jean": "smaug",
+    },
+  },
   "description": "",
   "headers": Object {
     "connection": "close",
-    "content-length": "2",
-    "content-type": "text/plain; charset=utf-8",
+    "content-length": "47",
+    "content-type": "application/json; charset=utf-8",
   },
   "statusCode": 200,
 }

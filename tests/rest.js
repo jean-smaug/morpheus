@@ -52,6 +52,7 @@ router.post("/body/edn", ctx => {
 
 //== Misc ==//
 router.get("/misc/query-params", ctx => {
+  ctx.body = { query: ctx.query }
   ctx.status = 200
 })
 
