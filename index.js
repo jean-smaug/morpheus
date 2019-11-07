@@ -8,19 +8,23 @@ const options = {
   silent: true
 };
 
-const args = process.argv.filter(arg => arg.startsWith("-") || arg.startsWith("--"))
+const args = process.argv.filter(
+  arg => arg.startsWith("-") || arg.startsWith("--")
+);
 
-const shouldWatch = args.includes("--watch") || args.includes("-w")
-const shouldUpdateSnapshot = args.includes("--updateSnapshot") || args.includes("-u")
+const shouldWatch = args.includes("--watch") || args.includes("-w");
+const shouldUpdateSnapshot =
+  args.includes("--updateSnapshot") || args.includes("-u");
 
 jest
-  .runCLI({
+  .runCLI(
+    {
       ...options,
       roots: ["./dist"],
       watch: shouldWatch,
       watchAll: shouldWatch,
       updateSnapshot: shouldUpdateSnapshot
-    }, 
+    },
     options.projects
   )
   .then(() => {

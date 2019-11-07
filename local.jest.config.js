@@ -1,14 +1,12 @@
 module.exports = {
   transform: {
-    "^.+\\.ts?$": "ts-jest",
+    "^.+\\.ts?$": "ts-jest"
   },
   moduleFileExtensions: ["ts", "js", "json"],
   globals: {
     "ts-jest": {
-      diagnostics: false,
-    },
+      diagnostics: false
+    }
   },
-  collectCoverageFrom: [
-    'src/**/*.ts',
-  ],
+  collectCoverageFrom: ["src/**/*.ts"]
 };

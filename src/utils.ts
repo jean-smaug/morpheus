@@ -1,37 +1,46 @@
 import _get from "lodash/get";
 import { OutgoingHttpHeaders } from "http";
 import crypto from "crypto";
-import { IResource, IEnvironment, IRequest } from "./types"
+import { IResource, IEnvironment, IRequest } from "./types";
 
 const VARIABLE = /{{\s*(?<variable>[\w.]+)\s*}}/i;
 
-export function replaceTemplateByValue(template: object, envs: object): IRequest {
-    const keys: string[] = Object.keys(template);
+export function replaceTemplateByValue(
+  template: object,
+  envs: object
+): IRequest {
+  const keys: string[] = Object.keys(template);
 
-    return keys.reduce((acc: object, key: string) => {
-      if(typeof template[key] === "object") {
-        if(template[key].length !== undefined) {
-          if (template[key].length === 0) {
-            return {...acc, [key]: template[key]}
-          }
-
-          return {...acc, [key]: template[key].map(item => replaceTemplateByValue(item, envs))}
+  return keys.reduce((acc: object, key: string) => {
+    if (typeof template[key] === "object") {
+      if (template[key].length !== undefined) {
+        if (template[key].length === 0) {
+          return { ...acc, [key]: template[key] };
         }
 
-        return { ...acc, [key]: replaceTemplateByValue(template[key], envs)}
+        return {
+          ...acc,
+          [key]: template[key].map(item => replaceTemplateByValue(item, envs))
+        };
       }
 
-      const execution = VARIABLE.exec(template[key]);
+      return { ...acc, [key]: replaceTemplateByValue(template[key], envs) };
+    }
 
-      if (execution === null || !execution.groups) {
-        return {... acc, [key]: template[key]};
-      }
-  
-      const { variable } = execution.groups;
-      const match = execution[0];
-  
-      return { ...acc, [key]: template[key].replace(match, _get(envs, variable)) };
-    }, {}) as IRequest;
+    const execution = VARIABLE.exec(template[key]);
+
+    if (execution === null || !execution.groups) {
+      return { ...acc, [key]: template[key] };
+    }
+
+    const { variable } = execution.groups;
+    const match = execution[0];
+
+    return {
+      ...acc,
+      [key]: template[key].replace(match, _get(envs, variable))
+    };
+  }, {}) as IRequest;
 }
 
 export function getEnvs(insomniaFile: any) {
@@ -43,31 +52,42 @@ export function getEnvs(insomniaFile: any) {
     );
 }
 
-export function formatHeaders(insomniaHeaders: { name: string, value: any }[]): { [key: string]: string } {
+export function formatHeaders(
+  insomniaHeaders: { name: string; value: any }[]
+): { [key: string]: string } {
   return insomniaHeaders.reduce((acc, insomniaHeader) => {
-    return { ...acc, [insomniaHeader.name]: insomniaHeader.value }
-  }, {})
+    return { ...acc, [insomniaHeader.name]: insomniaHeader.value };
+  }, {});
 }
 
-export function formatQueryParameters (parameters: { name: string, value: any }[]) {
+export function formatQueryParameters(
+  parameters: { name: string; value: any }[]
+) {
   return new URLSearchParams(
-    parameters.map(
-      (parameter) => ([parameter.name, parameter.value])
-    )
-  ).toString()
+    parameters.map(parameter => [parameter.name, parameter.value])
+  ).toString();
 }
 
-export function getHeaders({ authentication, headers: requestHeaders }: IRequest): OutgoingHttpHeaders {
-  const formatedRequestHeaders = formatHeaders(requestHeaders)
-  let headers: { [key: string]: string } = formatedRequestHeaders
+export function getHeaders({
+  authentication,
+  headers: requestHeaders
+}: IRequest): OutgoingHttpHeaders {
+  const formatedRequestHeaders = formatHeaders(requestHeaders);
+  let headers: { [key: string]: string } = formatedRequestHeaders;
 
-  if(authentication.type === "bearer" && authentication.token) {
-    headers.Authorization = `Bearer ${authentication.token}`
+  if (authentication.type === "bearer" && authentication.token) {
+    headers.Authorization = `Bearer ${authentication.token}`;
   }
 
-  if(authentication.type === "basic" && authentication.username && authentication.password) {
-    const basicToken = Buffer.from(`${authentication.username}:${authentication.password}`).toString("base64")
-    headers.Authorization = `Basic ${basicToken}`
+  if (
+    authentication.type === "basic" &&
+    authentication.username &&
+    authentication.password
+  ) {
+    const basicToken = Buffer.from(
+      `${authentication.username}:${authentication.password}`
+    ).toString("base64");
+    headers.Authorization = `Basic ${basicToken}`;
   }
 
   return headers;
