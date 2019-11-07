@@ -46,7 +46,7 @@ requestsWithEnvs.forEach((request: IRequest) => {
       if(headers["content-type"] && headers["content-type"].includes("application/json")) {
         serializedBody = JSON.parse(body)
       }
-      
+
       expect({ statusCode, headers, body: serializedBody, description }).toMatchSnapshot();
     } catch (error) {
       expect(error).toMatchSnapshot();

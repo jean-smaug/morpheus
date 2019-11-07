@@ -26,7 +26,7 @@ router.get("/auth/hawk", ctx => {
 });
 
 //== Body ==//
-router.post("/body/multipart-form", ctx => {
+router.post("/body/multipart-form", koaBody(), ctx => {
   ctx.body = ctx.request.body
 })
 
