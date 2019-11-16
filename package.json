@@ -1,6 +1,6 @@
 {
   "name": "@lano/morpheus",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "main": "index.js",
   "repository": "git@github.com:jean-smaug/morpheus.git",
   "author": "jean-smaug <maximeblanc.dev@gmail.com>",
@@ -11,7 +11,7 @@
   "scripts": {
     "servers": "concurrently 'yarn rest' 'yarn graphql'",
     "dev": "concurrently 'yarn servers' 'yarn watch'",
-    "test": "jest src/__tests__ --config=local.jest.config.js",
+    "test": "jest src/__tests__ --config=jest.config.js",
     "watch": "tsc --watch",
     "rest": "nodemon tests/rest.js",
     "graphql": "nodemon tests/graphql.js",

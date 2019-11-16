@@ -20,10 +20,10 @@ jest
   .runCLI(
     {
       ...options,
-      roots: ["./dist"],
       watch: shouldWatch,
       watchAll: shouldWatch,
-      updateSnapshot: shouldUpdateSnapshot
+      updateSnapshot: shouldUpdateSnapshot,
+      config: `${__dirname}/morpheus.config.js`
     },
     options.projects
   )

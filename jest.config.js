@@ -1,3 +1,12 @@
 module.exports = {
-  snapshotResolver: "./snapshotResolver.js"
+  transform: {
+    "^.+\\.ts?$": "ts-jest"
+  },
+  moduleFileExtensions: ["ts", "js", "json"],
+  globals: {
+    "ts-jest": {
+      diagnostics: false
+    }
+  },
+  collectCoverageFrom: ["src/**/*.ts"]
 };
