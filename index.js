@@ -23,7 +23,7 @@ jest
       watch: shouldWatch,
       watchAll: shouldWatch,
       updateSnapshot: shouldUpdateSnapshot,
-      config: path.resolve(__dirname, "/morpheus.config.js")
+      config: path.resolve(__dirname, "morpheus.config.js")
     },
     options.projects
   )
