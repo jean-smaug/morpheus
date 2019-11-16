@@ -1,9 +1,7 @@
-const path = require("path");
-
 module.exports = {
   verbose: true,
-  rootDir: path.resolve(__dirname),
-  snapshotResolver: path.resolve(__dirname, "snapshotResolver.js"),
-  testMatch: [path.resolve(__dirname, "tests/morpheus.spec.js")],
+  rootDir: __dirname,
+  snapshotResolver: "<rootDir>/node_modules/@lano/morpheus/snapshotResolver.js",
+  testMatch: ["<rootDir>/node_modules/@lano/morpheus/tests/morpheus.spec.js"],
   testPathIgnorePatterns: []
 };
