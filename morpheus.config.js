@@ -1,4 +1,7 @@
 module.exports = {
-  roots: ["./dist"],
-  snapshotResolver: "./snapshotResolver.js"
+  verbose: true,
+  rootDir: __dirname,
+  snapshotResolver: "<rootDir>/node_modules/@lano/morpheus/snapshotResolver.js",
+  testMatch: ["<rootDir>/node_modules/@lano/morpheus/tests/morpheus.spec.js"],
+  testPathIgnorePatterns: []
 };

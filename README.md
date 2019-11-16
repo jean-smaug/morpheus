@@ -1,4 +1,4 @@
-# [WIP] Morpheus
+# Morpheus
 
 Export your [Insomnia](https://insomnia.rest) workspace and test it in command line.
 
@@ -7,7 +7,20 @@ Export your [Insomnia](https://insomnia.rest) workspace and test it in command l
 ## Installation
 
 ```bash
-yarn add -DE @lano/morpheus
+yarn add -DE @lano/morpheus jest
+```
+
+Create a `morpheus.config.js` and put this content
+
+```js
+// morpheus.config.js
+module.exports = {
+  verbose: true,
+  rootDir: __dirname,
+  snapshotResolver: "<rootDir>/node_modules/@lano/morpheus/snapshotResolver.js",
+  testMatch: ["<rootDir>/node_modules/@lano/morpheus/tests/morpheus.spec.js"],
+  testPathIgnorePatterns: []
+};
 ```
 
 ## Usage
@@ -17,27 +30,7 @@ By default Morpheus search look for a file named `/Insomnia.*\.json/i`
 ```json
 {
   "scripts": {
-    "test:api": "morpheus"
-  }
-}
-```
-
-You can specify a file name using the `FILE` env variable
-
-```json
-{
-  "scripts": {
-    "test:api": "FILE=./__tests__/Insomnia.json morpheus"
-  }
-}
-```
-
-Because Morpheus is built on the top of Jest, you can use `--watch` and `--updateSnapshot` options. You can also use the short forms `-u` and `-w`.
-
-```json
-{
-  "scripts": {
-    "test:api": "morpheus --watch --updateSnapshot"
+    "test:api": "jest --config=morpheus.config.js"
   }
 }
 ```
@@ -62,4 +55,4 @@ Object {
 
 ## To do
 
-In `file.ts` take the most recent file using fs.statSync is there are multiples Insomnia files 
+In `file.ts` take the most recent file using fs.statSync is there are multiples Insomnia files

@@ -5,7 +5,7 @@ module.exports = {
   resolveSnapshotPath: (testPath, snapshotExtension) => {
     return (
       process.cwd() +
-      testPath.replace(__dirname, "").replace("dist/", "") +
+      testPath.replace(__dirname, "").replace("tests/", "") +
       snapshotExtension
     );
   },
@@ -19,11 +19,11 @@ module.exports = {
       snapshotFilePath
         .replace(process.cwd(), "")
         .slice(0, -fileName.length)
-        .concat("dist/")
+        .concat("tests/")
         .concat(fileName.slice(0, -snapshotExtension.length))
     );
   },
 
   // Example test path, used for preflight consistency check of the implementation above
-  testPathForConsistencyCheck: `${__dirname}/dist/example.spec.js`
+  testPathForConsistencyCheck: `${__dirname}/tests/example.spec.js`
 };
