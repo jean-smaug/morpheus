@@ -10,19 +10,6 @@ Export your [Insomnia](https://insomnia.rest) workspace and test it in command l
 yarn add -DE @lano/morpheus jest
 ```
 
-Create a `morpheus.config.js` and put this content
-
-```js
-// morpheus.config.js
-module.exports = {
-  verbose: true,
-  rootDir: __dirname,
-  snapshotResolver: "<rootDir>/node_modules/@lano/morpheus/snapshotResolver.js",
-  testMatch: ["<rootDir>/node_modules/@lano/morpheus/tests/morpheus.spec.js"],
-  testPathIgnorePatterns: []
-};
-```
-
 ## Usage
 
 By default Morpheus search look for a file named `/Insomnia.*\.json/i`
@@ -30,7 +17,7 @@ By default Morpheus search look for a file named `/Insomnia.*\.json/i`
 ```json
 {
   "scripts": {
-    "test:api": "jest --config=morpheus.config.js"
+    "test:api": "morpheus"
   }
 }
 ```
