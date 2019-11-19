@@ -4,7 +4,7 @@ Export your [Insomnia](https://insomnia.rest) workspace and test it in command l
 
 ![demo](demo.gif)
 
-## Feature
+## Features
 
 - [x] Env variables
 - [x] Basic Auth
