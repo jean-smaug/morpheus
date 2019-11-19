@@ -1,7 +1,7 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2019-11-07T10:08:40.776Z",
+  "__export_date": "2019-11-19T12:20:28.166Z",
   "__export_source": "insomnia.desktop.app:v7.0.3",
   "resources": [
     {
@@ -226,7 +226,7 @@
       "isPrivate": false,
       "metaSortKey": -1572965139357.5,
       "method": "POST",
-      "modified": 1573054399690,
+      "modified": 1574093789529,
       "name": "Form URL encoded",
       "parameters": [],
       "parentId": "fld_18ad8ecd500d4b2a8989e8524d93a642",
@@ -257,8 +257,39 @@
       "isPrivate": false,
       "metaSortKey": -1572965139345,
       "method": "POST",
-      "modified": 1573054165832,
-      "name": "GraphQL",
+      "modified": 1574165481367,
+      "name": "GraphQL query",
+      "parameters": [],
+      "parentId": "fld_18ad8ecd500d4b2a8989e8524d93a642",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "{{ graphqlBaseUrl  }}",
+      "_type": "request"
+    },
+    {
+      "_id": "req_af0ff8c5d87845669ec8890cf1de9213",
+      "authentication": {},
+      "body": {
+        "mimeType": "application/graphql",
+        "text": "{\"query\":\"mutation($title: String, $author: String) {\\n  addBook(title: $title, author: $author) {\\n    title\\n  }\\n}\\n\",\"variables\":{\"title\":\"Fox in Socks\",\"author\":\"Dr. Seuss\"}}"
+      },
+      "created": 1574165485648,
+      "description": "",
+      "headers": [
+        {
+          "id": "pair_d070764b7a584d9891ab8f5d5781868d",
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "isPrivate": false,
+      "metaSortKey": -1572965139332.5,
+      "method": "POST",
+      "modified": 1574166005070,
+      "name": "GraphQL mutation",
       "parameters": [],
       "parentId": "fld_18ad8ecd500d4b2a8989e8524d93a642",
       "settingDisableRenderRequestBody": false,

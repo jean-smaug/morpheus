@@ -133,7 +133,30 @@ Object {
 }
 `;
 
-exports[`POST - GraphQL 1`] = `
+exports[`POST - GraphQL mutation 1`] = `
+Object {
+  "body": Object {
+    "data": Object {
+      "addBook": Object {
+        "title": "Harry Potter and the Chamber of Secrets",
+      },
+    },
+  },
+  "description": "",
+  "headers": Object {
+    "access-control-allow-origin": "*",
+    "connection": "close",
+    "content-length": "73",
+    "content-type": "application/json; charset=utf-8",
+    "etag": "W/\\"49-ou56KuuKxz0vFGVDOYdr1VPrems\\"",
+    "x-powered-by": "Express",
+  },
+  "statusCode": 200,
+  "url": "http://localhost:4000",
+}
+`;
+
+exports[`POST - GraphQL query 1`] = `
 Object {
   "body": Object {
     "data": Object {

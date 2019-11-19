@@ -11,11 +11,20 @@ const typeDefs = gql`
   type Query {
     books: [Book]
   }
+
+  type Mutation {
+    addBook(title: String, author: String): Book
+  }
 `;
 
 const resolvers = {
   Query: {
     books: () => books
+  },
+  Mutation: {
+    addBook() { 
+      return books[0]
+    }
   }
 };
 
