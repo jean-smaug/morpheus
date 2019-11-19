@@ -11,8 +11,8 @@
     "test": "jest src/__tests__ --config=jest.config.js",
     "watch": "tsc --watch",
     "build": "tsc",
-    "rest": "nodemon mocks/rest.js",
-    "graphql": "nodemon mocks/graphql.js",
+    "rest": "nodemon servers/rest.js",
+    "graphql": "nodemon servers/graphql.js",
     "morpheus": "jest --config=morpheus.local.config.js"
   },
   "dependencies": {
