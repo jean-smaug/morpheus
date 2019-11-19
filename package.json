@@ -12,7 +12,8 @@
     "watch": "tsc --watch",
     "build": "tsc",
     "rest": "nodemon mocks/rest.js",
-    "graphql": "nodemon mocks/graphql.js"
+    "graphql": "nodemon mocks/graphql.js",
+    "morpheus": "jest --config=morpheus.local.config.js"
   },
   "dependencies": {
     "got": "9.6.0",

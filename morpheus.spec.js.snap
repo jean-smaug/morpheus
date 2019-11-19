@@ -1,0 +1,216 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GET - Basic 1`] = `
+Object {
+  "body": "OK",
+  "description": "",
+  "headers": Object {
+    "connection": "close",
+    "content-length": "2",
+    "content-type": "text/plain; charset=utf-8",
+  },
+  "statusCode": 200,
+  "url": "http://localhost:5000/auth/basic",
+}
+`;
+
+exports[`GET - Bearer token 1`] = `
+Object {
+  "body": "OK",
+  "description": "",
+  "headers": Object {
+    "connection": "close",
+    "content-length": "2",
+    "content-type": "text/plain; charset=utf-8",
+  },
+  "statusCode": 200,
+  "url": "http://localhost:5000/auth/bearer",
+}
+`;
+
+exports[`GET - Digest 1`] = `
+Object {
+  "body": "OK",
+  "description": "",
+  "headers": Object {
+    "connection": "close",
+    "content-length": "2",
+    "content-type": "text/plain; charset=utf-8",
+  },
+  "statusCode": 200,
+  "url": "http://localhost:5000/auth/digest",
+}
+`;
+
+exports[`GET - Documentation 1`] = `
+Object {
+  "body": "OK",
+  "description": "Tu crois que c'est du respect mon garçon ?",
+  "headers": Object {
+    "connection": "close",
+    "content-length": "2",
+    "content-type": "text/plain; charset=utf-8",
+  },
+  "statusCode": 200,
+  "url": "http://localhost:5000/misc/documentation",
+}
+`;
+
+exports[`GET - Hawk 1`] = `
+Object {
+  "body": "OK",
+  "description": "",
+  "headers": Object {
+    "connection": "close",
+    "content-length": "2",
+    "content-type": "text/plain; charset=utf-8",
+  },
+  "statusCode": 200,
+  "url": "http://localhost:5000/auth/hawk",
+}
+`;
+
+exports[`GET - Headers 1`] = `
+Object {
+  "body": "OK",
+  "description": "",
+  "headers": Object {
+    "accept-encoding": "gzip, deflate",
+    "connection": "close",
+    "content-length": "2",
+    "content-type": "text/plain; charset=utf-8",
+    "host": "localhost:5000",
+    "issou": "la chancla",
+    "jean": "smaug",
+  },
+  "statusCode": 200,
+  "url": "http://localhost:5000/misc/headers",
+}
+`;
+
+exports[`GET - Query params 1`] = `
+Object {
+  "body": Object {
+    "query": Object {
+      "issou": "la chancla",
+      "jean": "smaug",
+    },
+  },
+  "description": "",
+  "headers": Object {
+    "connection": "close",
+    "content-length": "47",
+    "content-type": "application/json; charset=utf-8",
+  },
+  "statusCode": 200,
+  "url": "http://localhost:5000/misc/query-params",
+}
+`;
+
+exports[`POST - EDN 1`] = `
+Object {
+  "body": "",
+  "description": "",
+  "headers": Object {
+    "connection": "close",
+  },
+  "statusCode": 204,
+  "url": "http://localhost:5000/body/edn",
+}
+`;
+
+exports[`POST - Form URL encoded 1`] = `
+Object {
+  "body": Object {},
+  "description": "",
+  "headers": Object {
+    "connection": "close",
+    "content-length": "2",
+    "content-type": "application/json; charset=utf-8",
+  },
+  "statusCode": 200,
+  "url": "http://localhost:5000/body/form-url-encoded",
+}
+`;
+
+exports[`POST - GraphQL 1`] = `
+Object {
+  "body": Object {
+    "data": Object {
+      "books": Array [
+        Object {
+          "title": "Harry Potter and the Chamber of Secrets",
+        },
+        Object {
+          "title": "Jurassic Park",
+        },
+      ],
+    },
+  },
+  "description": "",
+  "headers": Object {
+    "access-control-allow-origin": "*",
+    "connection": "close",
+    "content-length": "99",
+    "content-type": "application/json; charset=utf-8",
+    "etag": "W/\\"63-rqKuwXrbApDAKA6SS5Pb8FfTZUI\\"",
+    "x-powered-by": "Express",
+  },
+  "statusCode": 200,
+  "url": "http://localhost:4000",
+}
+`;
+
+exports[`POST - JSON 1`] = `
+Object {
+  "body": Object {
+    "jean": "smaug",
+  },
+  "description": "",
+  "headers": Object {
+    "connection": "close",
+    "content-length": "16",
+    "content-type": "application/json; charset=utf-8",
+  },
+  "statusCode": 200,
+  "url": "http://localhost:5000/body/json",
+}
+`;
+
+exports[`POST - Multipart form 1`] = `
+Object {
+  "body": Object {},
+  "description": "",
+  "headers": Object {
+    "connection": "close",
+    "content-length": "2",
+    "content-type": "application/json; charset=utf-8",
+  },
+  "statusCode": 200,
+  "url": "http://localhost:5000/body/multipart-form",
+}
+`;
+
+exports[`POST - XML 1`] = `
+Object {
+  "body": "",
+  "description": "",
+  "headers": Object {
+    "connection": "close",
+  },
+  "statusCode": 204,
+  "url": "http://localhost:5000/body/xml",
+}
+`;
+
+exports[`POST - YAML 1`] = `
+Object {
+  "body": "",
+  "description": "",
+  "headers": Object {
+    "connection": "close",
+  },
+  "statusCode": 204,
+  "url": "http://localhost:5000/body/yaml",
+}
+`;
