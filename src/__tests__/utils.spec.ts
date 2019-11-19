@@ -164,8 +164,4 @@ describe('> utils/getHeaders', () => {
     it('should return headers for token auth', () => {
         expect(getHeaders({...baseRequest, authentication: { token: "mein-token", type: "bearer" }})).toEqual({ Authorization: "Bearer mein-token" })
     })
-
-    it('should set headers for graphql query', () => {
-        expect(getHeaders({...baseRequest, body: { mimeType: "application/graphql", text: "{ foo, bar }" } })).toEqual({ "Content-Type": "application/json" })
-    })
 })

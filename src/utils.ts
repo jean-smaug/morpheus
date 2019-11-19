@@ -6,7 +6,7 @@ import { IResource, IEnvironment, IRequest } from "./types";
 const VARIABLE = /{{\s*(?<variable>[\w.]+)\s*}}/i;
 
 export function replaceTemplateByValue(
-  template: object,
+  template: any,
   envs: object
 ): IRequest {
   const keys: string[] = Object.keys(template);
@@ -20,7 +20,7 @@ export function replaceTemplateByValue(
 
         return {
           ...acc,
-          [key]: template[key].map(item => replaceTemplateByValue(item, envs))
+          [key]: template[key].map((item: any) => replaceTemplateByValue(item, envs))
         };
       }
 

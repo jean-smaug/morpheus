@@ -1,4 +1,6 @@
 module.exports = {
+  rootDir: __dirname,
+  testMatch: ["<rootDir>/src/**/*.spec.ts"],
   transform: {
     "^.+\\.ts?$": "ts-jest"
   },
@@ -8,5 +10,5 @@ module.exports = {
       diagnostics: false
     }
   },
-  collectCoverageFrom: ["src/**/*.ts"]
+  collectCoverageFrom: ["src/__tests__/*.spec.ts"]
 };

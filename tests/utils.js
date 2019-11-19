@@ -13,7 +13,7 @@ function replaceTemplateByValue(template, envs) {
                 if (template[key].length === 0) {
                     return Object.assign(Object.assign({}, acc), { [key]: template[key] });
                 }
-                return Object.assign(Object.assign({}, acc), { [key]: template[key].map(item => replaceTemplateByValue(item, envs)) });
+                return Object.assign(Object.assign({}, acc), { [key]: template[key].map((item) => replaceTemplateByValue(item, envs)) });
             }
             return Object.assign(Object.assign({}, acc), { [key]: replaceTemplateByValue(template[key], envs) });
         }

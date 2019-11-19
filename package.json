@@ -8,7 +8,7 @@
   "scripts": {
     "servers": "concurrently 'yarn rest' 'yarn graphql'",
     "dev": "concurrently 'yarn servers' 'yarn watch'",
-    "test": "jest src/__tests__ --config=jest.config.js",
+    "test": "jest --config=jest.config.js",
     "watch": "tsc --watch",
     "build": "tsc",
     "rest": "nodemon servers/rest.js",
