@@ -4,6 +4,19 @@ Export your [Insomnia](https://insomnia.rest) workspace and test it in command l
 
 ![demo](demo.gif)
 
+## Feature
+
+- [x] Env variables
+- [x] Basic Auth
+- [x] JWT
+- [x] GET, POST, PUT, DELETE
+- [x] GraphQL
+- [x] Custom headers
+- [x] Query params
+- [ ] Chaining Requests
+- [ ] OAuth
+- [ ] OAuth2
+
 ## Installation
 
 ```bash
