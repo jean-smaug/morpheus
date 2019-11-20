@@ -107,6 +107,22 @@ Object {
 }
 `;
 
+exports[`POST - Chaining request 1`] = `
+Object {
+  "body": Object {
+    "value": "{% response 'header', 'req_6a88cfb7b55b4f8d9b40d1462c4486e6', 'b64::Q29udGVudC1UeXBl::46b', 'always' %}",
+  },
+  "description": "",
+  "headers": Object {
+    "connection": "close",
+    "content-length": "115",
+    "content-type": "application/json; charset=utf-8",
+  },
+  "statusCode": 200,
+  "url": "http://localhost:5000/misc/chaining-request",
+}
+`;
+
 exports[`POST - EDN 1`] = `
 Object {
   "body": "",

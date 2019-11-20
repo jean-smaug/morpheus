@@ -68,6 +68,10 @@ router.get("/misc/documentation", ctx => {
   ctx.status = 200;
 });
 
+router.post("/misc/chaining-request", koaBody(), ctx => {
+  ctx.body = ctx.request.body;
+});
+
 app.use(router.routes());
 app.use(router.allowedMethods());
 

@@ -1,7 +1,7 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2019-11-19T12:20:28.166Z",
+  "__export_date": "2019-11-20T11:14:52.966Z",
   "__export_source": "insomnia.desktop.app:v7.0.3",
   "resources": [
     {
@@ -516,6 +516,37 @@
       "settingSendCookies": true,
       "settingStoreCookies": true,
       "url": "{{ restBaseUrl  }}/misc/documentation",
+      "_type": "request"
+    },
+    {
+      "_id": "req_e86806b669b446a99daa4d9b6df51896",
+      "authentication": {},
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"value\": \"{% response 'header', 'req_6a88cfb7b55b4f8d9b40d1462c4486e6', 'b64::Q29udGVudC1UeXBl::46b', 'always' %}\"\n}\n"
+      },
+      "created": 1574238926596,
+      "description": "",
+      "headers": [
+        {
+          "id": "pair_9b1f6aa23089470e85f6758c6081d3e4",
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "isPrivate": false,
+      "metaSortKey": -1571960970481.0938,
+      "method": "POST",
+      "modified": 1574248478958,
+      "name": "Chaining request",
+      "parameters": [],
+      "parentId": "fld_7992081232ed4dba90ee6b8f8c48ee56",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "{{ restBaseUrl  }}/misc/chaining-request",
       "_type": "request"
     },
     {
