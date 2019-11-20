@@ -39,4 +39,4 @@ export interface IEnvironment extends IResource {
   _type: "environment";
 }
 
-export type LowerCasedHttpMethod = "get" | "post" | "put" | "delete";
+export type LowerCasedHttpMethod = "get" | "post" | "put" | "patch" | "delete" | "head";

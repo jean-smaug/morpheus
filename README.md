@@ -9,7 +9,7 @@ Export your [Insomnia](https://insomnia.rest) workspace and test it in command l
 - [x] Env variables
 - [x] Basic Auth
 - [x] JWT
-- [x] GET, POST, PUT, DELETE
+- [x] GET, POST, PUT, PATCH, DELETE, HEAD requests
 - [x] GraphQL
 - [x] Custom headers
 - [x] Query params
