@@ -16,6 +16,7 @@ Export your [Insomnia](https://insomnia.rest) workspace and test it in command l
 - [ ] Chaining Requests
 - [ ] OAuth
 - [ ] OAuth2
+- [ ] File upload
 
 ## Installation
 
