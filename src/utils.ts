@@ -43,6 +43,14 @@ export function replaceTemplateByValue(
   }, {}) as IRequest;
 }
 
+export function getChainingRequestId(template: string) {
+  const parsedTemplate = JSON.parse(template)
+  const templateKeys = Object.keys(parsedTemplate)
+  return templateKeys.reduce((acc, templateKey) => {
+    return { ...acc, [templateKey]: parsedTemplate[templateKey].split(",").map((i: string) => i.trim())[1].subsring(1) }
+  }, {})
+}
+
 export function getEnvs(insomniaFile: any) {
   return insomniaFile.resources
     .filter((resource: IResource) => resource._type === "environment")

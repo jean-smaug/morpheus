@@ -1,4 +1,4 @@
-import { replaceTemplateByValue, formatHeaders, formatQueryParameters, getHeaders } from "../utils"
+import { replaceTemplateByValue, getChainingRequestId, formatHeaders, formatQueryParameters, getHeaders } from "../utils"
 import { IRequest } from "../types"
 
 describe("> utils/replaceTemplateByValue", () => {
@@ -163,5 +163,13 @@ describe('> utils/getHeaders', () => {
     
     it('should return headers for token auth', () => {
         expect(getHeaders({...baseRequest, authentication: { token: "mein-token", type: "bearer" }})).toEqual({ Authorization: "Bearer mein-token" })
+    })
+})
+
+describe('> utils/getChainingRequestId', () => {
+    const template  = "{\n\t\"value\": \"{% response 'header', 'req_6a88cfb7b55b4f8d9b40d1462c4486e6', 'b64::Q29udGVudC1UeXBl::46b', 'always' %}\"\n}\n"
+
+    it('should replace template by values', () => {
+        expect(getChainingRequestId(template)).toBe('req_6a88cfb7b55b4f8d9b40d1462c4486e6')
     })
 })
