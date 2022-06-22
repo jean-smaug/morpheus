@@ -16,7 +16,7 @@
     "morpheus": "jest --config=morpheus.local.config.js"
   },
   "dependencies": {
-    "got": "9.6.0",
+    "got": "11.8.5",
     "lodash": "4.17.15"
   },
   "peerDependencies": {
